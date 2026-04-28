@@ -37,6 +37,10 @@ h4 {
   line-clamp: 2;
 }
 
+p {
+  font-size: 18px;
+}
+
 button {
   border: none;
   background-color: transparent;
@@ -66,7 +70,7 @@ button {
   top: 0;
   left: 0;
   width: 100%;
-  height: 500px;
+  height: 650px;
   background-color: var(--light-beige);
   z-index: -1;
 }
@@ -75,8 +79,8 @@ button {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin-top: 20px ;
-  margin-bottom: 50px ;
+  margin-top: 20px;
+  margin-bottom: 50px;
 }
 
 .quick-link {
@@ -141,15 +145,47 @@ button {
   background-color: var(--white);
   color: var(--primary-color) !important;
 }
-.active-btn:hover{
-    color: var(--primary-color);
+.active-btn:hover {
+  color: var(--primary-color);
 }
 
 /* small banner */
-.small-banner{
-display: flex;
-align-items: center;
-background-color: var(--deep-beige);
-border-radius: 30px;
-padding: 40px;
+.small-banner {
+  display: flex;
+  align-items: center;
+  background-color: var(--deep-beige);
+  border-radius: 30px;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+.small-banner-text-content {
+  width: 42%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+
+  
+}
+
+.small-banner-text-content p{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  margin: 18px 0;
+  
+  line-height: 1.6;
+}
+
+.feature-img{
+  width: 58%
+}
+
+.small-banner img{
+vertical-align: middle;
+aspect-ratio: 3.67 / 2;
+    object-fit: cover;
+    width: 100%;
 }
