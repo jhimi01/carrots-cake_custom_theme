@@ -305,6 +305,7 @@ section {
 .subscription {
   display: flex;
   padding-top: 115px;
+  padding-bottom: 75px;
 }
 .subs-text {
   padding-right: 20px;
@@ -388,4 +389,12 @@ section {
   vertical-align: middle;
   font-weight: 500;
   height: 47px;
+}
+
+footer {
+  width: 100%;
+}
+
+footer img {
+  vertical-align: middle;
 }

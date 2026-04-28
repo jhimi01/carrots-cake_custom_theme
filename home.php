@@ -64,7 +64,8 @@
             $query = new WP_Query($args);
 
             if ($query->have_posts()):
-                while ($query->have_posts()): $query->the_post();
+                while ($query->have_posts()):
+                    $query->the_post();
 
                     ?>
 
@@ -72,18 +73,18 @@
                         <a href="<?php the_permalink(); ?>">
                             <?php the_post_thumbnail(); ?>
                         </a>
-                       <div class="info">
-                         <div class="badge">Carrots&cake Guides</div>
-                        <p class="date">September 28, 2025</p>
-                       </div>
-                         <h5 class="post-title">
+                        <div class="info">
+                            <div class="badge">Carrots&cake Guides</div>
+                            <p class="date">September 28, 2025</p>
+                        </div>
+                        <h5 class="post-title">
                             <?php the_title(); ?>
                         </h5>
                         <div class="author">
                             <!-- <img src="" class="author-img" alt=""> -->
                             <p>Azahar Sulaiman</p>
                         </div>
-                       
+
                     </div>
 
                     <?php
