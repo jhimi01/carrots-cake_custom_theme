@@ -25,10 +25,21 @@ h1 {
   font-weight: 600;
 }
 h2 {
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+h3 {
   font-size: 42px;
   font-weight: 600;
 }
 h4 {
+  font-size: 25px;
+  line-height: 1.4;
+  font-weight: 600;
+  color: var(--dark);
+}
+h5 {
   font-size: 24px;
   line-height: 1.2em;
   font-weight: 600;
@@ -164,28 +175,115 @@ button {
   padding: 40px;
   display: flex;
   flex-direction: column;
-
-  
 }
 
-.small-banner-text-content p{
+.small-banner-text-content p {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   margin: 18px 0;
-  
+
   line-height: 1.6;
 }
 
-.feature-img{
-  width: 58%
+.feature-img {
+  width: 58%;
 }
 
-.small-banner img{
-vertical-align: middle;
-aspect-ratio: 3.67 / 2;
-    object-fit: cover;
-    width: 100%;
+.small-banner img {
+  vertical-align: middle;
+  aspect-ratio: 3.67 / 2;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* subsscription */
+.subscription {
+  display: flex;
+  padding-top: 115px;
+}
+.subs-text {
+  padding-right: 20px;
+  width: 52.2%;
+}
+.subs-text h2 {
+  color: var(--secondary);
+}
+
+.subs-text .subs-text-h4 {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.subscription ul {
+  margin-top: 50px;
+  max-width: 630px;
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+  margin-bottom: 0;
+  margin-left: 0;
+}
+.subscription ul li {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.subscription ul li h6 {
+  font-size: 16px;
+  line-height: 1.3;
+  font-weight: 500;
+}
+
+.subscription ul li img {
+  object-fit: contain;
+  max-height: 40px;
+}
+.app-store {
+  margin-top: 32px;
+}
+.subs-img {
+  width: 47.8%;
+  border-radius: 30px;
+  overflow: hidden;
+}
+.subs-img img {
+  border-end-start-radius: 30px;
+  border-end-end-radius: 30px;
+  margin-bottom: 20px;
+}
+
+.subs-img form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+
+  line-height: 2;
+}
+
+.subs-img form input {
+  border: none;
+  font-size: 14px;
+  margin-bottom: 20px;
+  border: 1px solid #ceced2;
+  color: var(--dark);
+  border-radius: 7px;
+  padding: 8.5px 10px;
+  width: 100%;
+  height: 47px;
+}
+.subs-img form button {
+  width: 100%;
+  background: #0f9a49;
+  border: 1px solid #0f9a49;
+  color: var(--white);
+  padding: 8.5px 10px;
+  border-radius: 7px;
+  font-size: 14px;
+  vertical-align: middle;
+  font-weight: 500;
+  height: 47px;
 }
