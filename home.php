@@ -53,23 +53,51 @@
         </div>
 
         <!-- articles -->
-        <!-- <div class="articles">
-            <div class="article-card">
-                <img src="" alt="">
-                <div class="badge">Carrots&cake Guides</div>
-                <p class="date">September 28, 2025</p>
-                <div class="author">
-                    <img src="" class="author-img" alt="">
-                    <p>Azahar Sulaiman</p>
-                </div>
-            </div>
-            <div class="pagination">
+        <div class="articles">
+
+            <?php
+            $args = array(
+                'post_type' => 'post',
+                'posts_per_page' => 9,
+            );
+
+            $query = new WP_Query($args);
+
+            if ($query->have_posts()):
+                while ($query->have_posts()): $query->the_post();
+
+                    ?>
+
+                    <div class="article-card">
+                        <a href="<?php the_permalink(); ?>">
+                            <?php the_post_thumbnail(); ?>
+                        </a>
+                       <div class="info">
+                         <div class="badge">Carrots&cake Guides</div>
+                        <p class="date">September 28, 2025</p>
+                       </div>
+                         <h5 class="post-title">
+                            <?php the_title(); ?>
+                        </h5>
+                        <div class="author">
+                            <!-- <img src="" class="author-img" alt=""> -->
+                            <p>Azahar Sulaiman</p>
+                        </div>
+                       
+                    </div>
+
+                    <?php
+                endwhile;
+                wp_reset_postdata();
+            endif;
+            ?>
+            <!-- <div class="pagination">
                 <p>1</p>
                 <p>2</p>
                 <p>3</p>
                 <p>...</p>
-            </div>
-        </div> -->
+            </div> -->
+        </div>
 
 
 
@@ -77,7 +105,8 @@
         <div class="subscription">
             <div class="subs-text">
                 <h2>Halve your kids’ overall screen time in 7 days with Carrots&Cake</h2>
-                <h4 class="subs-text-h4">Now you can encourage your little ones to use good educational apps without the tantrums.</h4>
+                <h4 class="subs-text-h4">Now you can encourage your little ones to use good educational apps without the
+                    tantrums.</h4>
                 <ul>
                     <li>
                         <img src="<?= get_template_directory_uri(); ?>/assets/images/check-mark.webp" alt="check mark">
@@ -103,7 +132,8 @@
                         </div>
                     </li>
                 </ul>
-                <img class="app-store" src="<?= get_template_directory_uri(); ?>/assets/images/app-store.webp" alt="app-store">
+                <img class="app-store" src="<?= get_template_directory_uri(); ?>/assets/images/app-store.webp"
+                    alt="app-store">
             </div>
             <div class="subs-img">
                 <img src="<?= get_template_directory_uri(); ?>/assets/images/roblox-rain.webp" alt="">

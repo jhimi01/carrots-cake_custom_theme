@@ -92,10 +92,7 @@ main {
  * Correct the font size and margin on `h1` elements within `section` and
  * `article` contexts in Chrome, Firefox, and Safari.
  */
-h1 {
-	font-size: 2em;
-	margin: 0.67em 0;
-}
+
 
 /* Grouping content
 	 ========================================================================== */
@@ -370,9 +367,7 @@ h6 {
 	clear: both;
 }
 
-p {
-	margin-bottom: 1.5em;
-}
+
 
 dfn,
 cite,
@@ -485,19 +480,6 @@ table {
 
 /* Links
 --------------------------------------------- */
-a {
-	color: #4169e1;
-}
-
-a:visited {
-	color: #800080;
-}
-
-a:hover,
-a:focus,
-a:active {
-	color: #191970;
-}
 
 a:focus {
 	outline: thin dotted;
