@@ -181,6 +181,10 @@ nav button:hover {
   background-color: transparent;
   color: var(--white);
 }
+.arrow{
+  width: 20px;
+  height: 20px;
+}
 
 .menu-bar {
   display: none;

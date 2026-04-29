@@ -39,7 +39,9 @@
 			<div class="nav-links ">
 				<ul>
 					<li><a href="/">Features</a></li>
-					<li class="dropdown"><a href="/articles">Parenting Tips</a>
+					<li class="dropdown"><a style="display: flex; align-items: center;" href="/articles">Parenting Tips
+							<img class="arrow" src="<?= get_template_directory_uri() ?>/assets/images/arrow.png"
+								alt="arrow"></a>
 						<ul class="navLinks-dropdown">
 							<li><a href="/">Top Parental Control Apps</a></li>
 							<li><a href="/">Learning App Recommendations</a></li>
