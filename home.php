@@ -67,6 +67,7 @@
                 while ($query->have_posts()):
                     $query->the_post();
 
+
                     ?>
 
                     <div class="article-card">
@@ -74,15 +75,17 @@
                             <?php the_post_thumbnail(); ?>
                         </a>
                         <div class="info">
-                            <div class="badge">Carrots&cake Guides</div>
-                            <p class="date">September 28, 2025</p>
+                            <div class="badge"> <?php the_category(); ?></div>
+                            <p class="date"><?= get_the_date() ?></p>
                         </div>
                         <h5 class="post-title">
                             <?php the_title(); ?>
                         </h5>
                         <div class="author">
-                            <!-- <img src="" class="author-img" alt=""> -->
-                            <p>Azahar Sulaiman</p>
+                            <img src="https://img.magnific.com/premium-vector/user-profile-icon-circle_1256048-12499.jpg?semt=ais_hybrid&w=740&q=80"
+                                class="author-img" alt="">
+                            <!-- <?php echo get_avatar(get_the_author_meta('ID'), 10); ?> -->
+                            <p><?php the_author(); ?></p>
                         </div>
 
                     </div>
