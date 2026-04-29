@@ -8,7 +8,8 @@
 
 
         <div class="article-header">
-            <h1>Articles</h1>
+            <h1> <?php single_cat_title(); ?></h1>
+
             <div class="quick-links-search">
                 <div class="quick-link">
                     <p>Quick links:</p>
@@ -30,7 +31,7 @@
 
 
             <a href="<?= get_permalink(get_option('page_for_posts')); ?>">
-                <button class="active-btn">All</button>
+                <button class="<?= is_home() ? 'active-btn' : '' ?>">All</button>
             </a>
 
             <?php $categories = get_categories([
@@ -43,7 +44,8 @@
                 ?>
 
                 <a href="<?= get_category_link($category->term_id); ?>">
-                    <button><?= $category->name; ?></button>
+                    <button
+                        class="<?= is_category($category->term_id) ? 'active-btn' : '' ?>"><?= $category->name; ?></button>
                 </a>
             <?php endforeach; ?>
         </div>
@@ -92,20 +94,12 @@
                 <?php endwhile; ?>
 
             </div>
-            <div class="pagination">
-                <?php
-                the_posts_pagination([
-                    'mid_size' => 2,
-                    'prev_text' => '←',
-                    'next_text' => '→',
-                ]);
-                ?>
-            </div>
 
 
         <?php else: ?>
             <p>No posts found in this category.</p>
         <?php endif; ?>
+
 
 
 

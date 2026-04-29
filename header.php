@@ -39,7 +39,7 @@
 			<div class="nav-links ">
 				<ul>
 					<li><a href="/">Features</a></li>
-					<li class="dropdown"><a href="/">Parenting Tips</a>
+					<li class="dropdown"><a href="/articles">Parenting Tips</a>
 						<ul class="navLinks-dropdown">
 							<li><a href="/">Top Parental Control Apps</a></li>
 							<li><a href="/">Learning App Recommendations</a></li>
