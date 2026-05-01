@@ -178,10 +178,11 @@ add_shortcode('articles', 'function_articles');
 function function_articles($atts)
 {
 	$atts = shortcode_atts([
-		'posts_per_page' => 9,
+		'posts_per_page' => 4,
 	], $atts);
 
-	$paged = get_query_var('paged') ? get_query_var('paged') : 1;
+	$paged = get_query_var('paged') ? get_query_var('paged') : get_query_var('page');
+	$paged = $paged ? $paged : 1;
 
 	// search input (optional)
 	$search = isset($_GET['art_search']) ? sanitize_text_field($_GET['art_search']) : '';
@@ -192,8 +193,7 @@ function function_articles($atts)
 		'paged' => $paged,
 	];
 
-	// Only apply search if the query is non-empty
-	if ($search !== '') {
+	if (trim($search) !== '') {
 		$args['s'] = $search;
 	}
 
@@ -239,10 +239,13 @@ function function_articles($atts)
 		<div class="pagination">
 			<?php
 			echo paginate_links([
+				'base' => str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999))),
+				'format' => '',
+				'current' => max(4, $paged),
 				'total' => $query->max_num_pages,
-				'current' => $paged,
 				'prev_text' => '←',
 				'next_text' => '→',
+				'add_args' => $search ? ['art_search' => $search] : false,
 			]);
 			?>
 		</div>
@@ -310,28 +313,6 @@ function contact()
 	<?php
 
 	return ob_get_clean();
-}
-
-
-add_shortcode('category_tab', 'categoryTabs');
-function categoryTabs()
-{
-	?>
-
-	<div class="quick-search">
-		<form method="get" action="">
-			<input type="text" name="art_search"
-				value="<?php echo isset($_GET['art_search']) ? esc_attr($_GET['art_search']) : ''; ?>"
-				placeholder="Search articles...">
-
-			<button type="submit">Search</button>
-
-		</form>
-
-	</div>
-
-	<?php
-
 }
 
 

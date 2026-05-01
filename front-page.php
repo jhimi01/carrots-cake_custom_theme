@@ -20,7 +20,7 @@
             <img src="<?= get_template_directory_uri(); ?>/assets/images/home_banner.webp" alt="hero img">
         </div>
     </div>
-    <?php echo do_shortcode('[articles posts_per_page="6"]'); ?>
+    <?php echo do_shortcode('[articles posts_per_page="4"]'); ?>
 
     <?= do_shortcode('[contact_section]') ?>
 </div>

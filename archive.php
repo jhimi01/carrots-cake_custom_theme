@@ -50,8 +50,8 @@
 				?>
 
 				<a href="<?= get_category_link($category->term_id); ?>">
-					<button
-						class="<?= is_category($category->term_id) ? 'active-btn' : '' ?>"><?= $category->name; ?></button>
+					<button class="<?= is_category($category->term_id) ? 'active-btn' : '' ?>"><?= $category->name; ?>
+					</button>
 				</a>
 			<?php endforeach; ?>
 		</div>
@@ -72,9 +72,7 @@
 		</div>
 
 		<!-- articles -->
-		<?php echo do_shortcode('[articles]'); ?>
-
-
+		<?= do_shortcode('[articles]'); ?>
 
 
 		<!-- subscription  -->
