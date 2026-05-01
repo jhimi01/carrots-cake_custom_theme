@@ -174,6 +174,7 @@ add_action('wp_enqueue_scripts', 'carrotscake_js_link_up');
 
 
 // shortcode------------
+add_shortcode('articles', 'function_articles');
 function function_articles($atts)
 {
 	$atts = shortcode_atts([
@@ -191,8 +192,14 @@ function function_articles($atts)
 		'paged' => $paged,
 	];
 
-	if (!empty($search)) {
+	// Only apply search if the query is non-empty
+	if ($search !== '') {
 		$args['s'] = $search;
+	}
+
+	// category filter
+	if (is_category()) {
+		$args['cat'] = get_queried_object_id();
 	}
 
 	$query = new WP_Query($args);
@@ -244,14 +251,88 @@ function function_articles($atts)
 		wp_reset_postdata();
 
 	else:
-		echo "<p>No posts found.</p>";
+		echo "<h3>No posts found.</h3>";
 	endif;
 
 	return ob_get_clean();
 }
 
-add_shortcode('articles', 'function_articles');
 
+
+
+add_shortcode('contact_section', 'contact');
+function contact()
+{
+	ob_start();
+	?>
+	<div class="subscription">
+		<div class="subs-text">
+			<h2>Halve your kids’ overall screen time in 7 days with Carrots&Cake</h2>
+			<h4 class="subs-text-h4">Now you can encourage your little ones to use good educational apps without the
+				tantrums.</h4>
+			<ul>
+				<li>
+					<img src="<?= get_template_directory_uri(); ?>/assets/images/check-mark.webp" alt="check mark">
+					<div>
+						<h4>Increase educational app usage by 200%</h4>
+						<h6>To unblock their games, kids must complete educational apps</h6>
+					</div>
+				</li>
+				<li>
+					<img src="<?= get_template_directory_uri(); ?>/assets/images/check-mark.webp" alt="check mark">
+					<div>
+						<h4>Cut overall screen time in half</h4>
+						<h6>Enhance your family's digital well-being by setting personalized screen time limits.
+						</h6>
+					</div>
+				</li>
+				<li>
+					<img src="<?= get_template_directory_uri(); ?>/assets/images/check-mark.webp" alt="check mark">
+					<div>
+						<h4>Enjoy your first 7 days absolutely free</h4>
+						<h6>Enjoy all the premium features of Carrots&Cake without spending a penny. No credit card
+							required.</h6>
+					</div>
+				</li>
+			</ul>
+			<img class="app-store" src="<?= get_template_directory_uri(); ?>/assets/images/app-store.webp" alt="app-store">
+		</div>
+		<div class="subs-img">
+			<img src="<?= get_template_directory_uri(); ?>/assets/images/roblox-rain.webp" alt="">
+			<form action="">
+				<input type="text" placeholder="Name" name="name">
+				<input type="email" placeholder="Email" name="email">
+				<button>Get a 7-day free trial</button>
+			</form>
+		</div>
+	</div>
+
+	<?php
+
+	return ob_get_clean();
+}
+
+
+add_shortcode('category_tab', 'categoryTabs');
+function categoryTabs()
+{
+	?>
+
+	<div class="quick-search">
+		<form method="get" action="">
+			<input type="text" name="art_search"
+				value="<?php echo isset($_GET['art_search']) ? esc_attr($_GET['art_search']) : ''; ?>"
+				placeholder="Search articles...">
+
+			<button type="submit">Search</button>
+
+		</form>
+
+	</div>
+
+	<?php
+
+}
 
 
 

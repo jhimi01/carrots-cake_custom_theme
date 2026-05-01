@@ -19,16 +19,12 @@
                 </div>
 
                 <div class="quick-search">
-
-
-                    <form method="get" action="">
-                        <input type="text" name="art_search"
+                    <form method="get" action="" id="article-search-form">
+                        <input type="text" name="art_search" id="art-search-input"
                             value="<?php echo isset($_GET['art_search']) ? esc_attr($_GET['art_search']) : ''; ?>"
                             placeholder="Search articles...">
-
                         <button type="submit">Search</button>
                     </form>
-
                 </div>
 
             </div>
@@ -72,12 +68,12 @@
         </div>
 
         <!----------------- articles ------------------->
-        <?php echo do_shortcode('[articles]'); ?>
+        <?= do_shortcode('[articles]'); ?>
 
 
 
         <!-- subscription  -->
-        <div class="subscription">
+        <!-- <div class="subscription">
             <div class="subs-text">
                 <h2>Halve your kids’ overall screen time in 7 days with Carrots&Cake</h2>
                 <h4 class="subs-text-h4">Now you can encourage your little ones to use good educational apps without the
@@ -118,7 +114,10 @@
                     <button>Get a 7-day free trial</button>
                 </form>
             </div>
-        </div>
+        </div> -->
+
+        <?= do_shortcode('[contact_section]') ?>
+
 
     </div>
 </section>

@@ -63,8 +63,8 @@ button {
   cursor: pointer;
 }
 
-input{
-   background-color: var(--white);
+input {
+  background-color: var(--white);
   color: var(--primary-color);
   border-radius: 8px;
   font-size: 18px;
@@ -89,6 +89,13 @@ input:focus {
     var(--primary-color) 0%,
     var(--secondary) 100%
   );
+}
+
+.text-orange {
+  color: var(--primary-color);
+}
+.bg-orange {
+  background: var(--primary-color);
 }
 
 /* header */
@@ -190,7 +197,7 @@ nav button:hover {
   background-color: transparent;
   color: var(--white);
 }
-.arrow{
+.arrow {
   width: 20px;
   height: 20px;
 }
@@ -207,7 +214,9 @@ nav button:hover {
   border-radius: 100px;
   padding-left: 14px;
   gap: 6px;
-  transition: background 0.2s, border-color 0.2s;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
   min-width: 220px;
 }
 
@@ -216,11 +225,12 @@ nav button:hover {
   border-color: rgba(255, 255, 255, 0.7);
 }
 
-.nav-search .search-wrapper svg {
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-  opacity: 0.75;
+.nav-search .search-wrapper i {
+  /* width: 16px;
+  height: 16px; */
+  /* flex-shrink: 0; */
+  font-size: 15px;
+  opacity: 0.75;  color: rgba(255, 255, 255, 0.65);
 }
 
 .nav-search .search-wrapper input {
@@ -240,14 +250,16 @@ nav button:hover {
 
 .nav-search .search-wrapper button {
   border: 1.5px solid rgba(255, 255, 255, 0.35);
-  background-color: transparent;
+  background-color: var(--white);
   border-radius: 100px;
-  font-size: 5px;
   cursor: pointer;
   transition: opacity 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.src-btn i{
+  color: var(--primary-color) !important;
 }
 .nav-search .search-wrapper button:hover {
   opacity: 0.85;
@@ -295,6 +307,40 @@ nav button:hover {
 
 .offens.active {
   left: 0;
+}
+
+/* -------- home page ---------- */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.hero-text{
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+
+.hero-text button {
+  color: var(--white);
+  padding: 20px 32px;
+  border-radius: 30px;
+  font-size: 24px;
+}
+.btn-sec{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.hero-img {
+  width: 100%;
+  /* margin-right: -114px; */
+  max-width: 700px;
+}
+
+.hero-img img {
+  width: 100%;
 }
 
 /* article page header */
@@ -346,7 +392,8 @@ section {
   font-size: 18px;
   border: none;
 }
-.quick-search input, .header-search input {
+.quick-search input,
+.header-search input {
   background-color: var(--white);
   color: var(--primary-color);
   border-radius: 8px;
@@ -654,35 +701,32 @@ footer {
   font-weight: 500;
 }
 
-
-
 .pagination {
-    margin-top: 40px;
-    text-align: center;
-    /* display: flex;
+  margin-top: 40px;
+  text-align: center;
+  /* display: flex;
     align-items: center;
     justify-content: center; */
 }
 
 .pagination .page-numbers {
-    display: inline-block;
-    margin: 0 5px;
-    padding: 15px 5px;
-    text-decoration: none;
-    color: var(--gray);
-    font-size: 18px;
-    font-weight: 600;
-    border-radius: 50%;
+  display: inline-block;
+  margin: 0 5px;
+  padding: 15px 5px;
+  text-decoration: none;
+  color: var(--gray);
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 50%;
 }
-.page-numbers.current{
+.page-numbers.current {
   color: var(--primary-color);
 }
-.page-numbers.next, .page-numbers.prev {
-    color: #ff7600;
-    background-color: #ff7600;
+.page-numbers.next,
+.page-numbers.prev {
+  color: #ff7600;
+  background-color: #ff7600;
 }
-
-
 
 @media (max-width: 900px) {
   nav .nav-links,

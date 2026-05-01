@@ -17,10 +17,9 @@
 	<meta charset="<?php bloginfo('charset'); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
-
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+		integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 	<?php wp_head(); ?>
 </head>
@@ -31,7 +30,7 @@
 	<header id="masthead" class="">
 		<nav>
 			<div>
-				<img src="<?= get_template_directory_uri(); ?>/assets/images/logo.webp" alt="logo">
+				<a href="/"><img src="<?= get_template_directory_uri(); ?>/assets/images/logo.webp" alt="logo"></a>
 			</div>
 			<div class="nav-links ">
 				<ul>
@@ -83,15 +82,9 @@
 				<form role="search" method="get" action="<?= home_url('/') ?>">
 					<div class="search-wrapper">
 						<!-- search icon SVG -->
-						<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
-							<circle cx="11" cy="11" r="8" />
-							<line x1="21" y1="21" x2="16.65" y2="16.65" />
-						</svg>
+						<i class="fa-solid fa-magnifying-glass"></i>
 						<input type="search" name="s" placeholder="Search articles…" value="<?= get_search_query() ?>">
-						<button type="submit"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
-							<circle cx="11" cy="11" r="8" />
-							<line x1="21" y1="21" x2="16.65" y2="16.65" />
-						</svg></button>
+						<button type="submit" class="src-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
 					</div>
 				</form>
 			</div>
