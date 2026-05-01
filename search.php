@@ -1,53 +1,38 @@
-<?php
-/**
- * The template for displaying search results pages
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
- *
- * @package Carrots&Cake
- */
+<?php get_header(); ?>
 
-get_header();
-?>
+<section class="container">
 
-	<main id="primary" class="site-main">
+    <h1>
+        Search results for: "<?php echo get_search_query(); ?>"
+    </h1>
 
-		<?php if ( have_posts() ) : ?>
+    <?php if (have_posts()) : ?>
+        <div class="articles">
 
-			<header class="page-header">
-				<h1 class="page-title">
-					<?php
-					/* translators: %s: search query. */
-					printf( esc_html__( 'Search Results for: %s', 'carrotscake' ), '<span>' . get_search_query() . '</span>' );
-					?>
-				</h1>
-			</header><!-- .page-header -->
+            <?php while (have_posts()) : the_post(); ?>
 
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
+                <div class="article-card">
+                    <a href="<?php the_permalink(); ?>">
+                        <?php the_post_thumbnail(); ?>
+                    </a>
 
-				/**
-				 * Run the loop for the search to output the results.
-				 * If you want to overload this in a child theme then include a file
-				 * called content-search.php and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', 'search' );
+                    <h5><?php the_title(); ?></h5>
+                    <p><?php echo get_the_date(); ?></p>
 
-			endwhile;
+                </div>
 
-			the_posts_navigation();
+            <?php endwhile; ?>
 
-		else :
+        </div>
 
-			get_template_part( 'template-parts/content', 'none' );
+        <div class="pagination">
+            <?php the_posts_pagination(); ?>
+        </div>
 
-		endif;
-		?>
+    <?php else : ?>
+        <p>No results found.</p>
+    <?php endif; ?>
 
-	</main><!-- #main -->
+</section>
 
-<?php
-get_sidebar();
-get_footer();
+<?php get_footer(); ?>

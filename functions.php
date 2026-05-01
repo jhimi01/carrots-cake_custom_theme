@@ -170,6 +170,92 @@ function carrotscake_js_link_up()
 }
 add_action('wp_enqueue_scripts', 'carrotscake_js_link_up');
 
+
+
+
+// shortcode------------
+function function_articles($atts)
+{
+	$atts = shortcode_atts([
+		'posts_per_page' => 9,
+	], $atts);
+
+	$paged = get_query_var('paged') ? get_query_var('paged') : 1;
+
+	// search input (optional)
+	$search = isset($_GET['art_search']) ? sanitize_text_field($_GET['art_search']) : '';
+
+	$args = [
+		'post_type' => 'post',
+		'posts_per_page' => $atts['posts_per_page'],
+		'paged' => $paged,
+	];
+
+	if (!empty($search)) {
+		$args['s'] = $search;
+	}
+
+	$query = new WP_Query($args);
+
+	ob_start();
+
+	if ($query->have_posts()):
+		?>
+		<div class="articles">
+
+			<?php while ($query->have_posts()):
+				$query->the_post(); ?>
+
+				<div class="article-card">
+					<a href="<?php the_permalink(); ?>">
+						<?php the_post_thumbnail(); ?>
+					</a>
+
+					<div class="info">
+						<div class="badge"><?php the_category(); ?></div>
+						<p class="date"><?php echo get_the_date(); ?></p>
+					</div>
+
+					<h5 class="post-title"><?php the_title(); ?></h5>
+
+					<div class="author">
+						<img src="https://img.magnific.com/premium-vector/user-profile-icon-circle_1256048-12499.jpg"
+							class="author-img" alt="">
+						<p><?php the_author(); ?></p>
+					</div>
+				</div>
+
+			<?php endwhile; ?>
+
+		</div>
+
+		<div class="pagination">
+			<?php
+			echo paginate_links([
+				'total' => $query->max_num_pages,
+				'current' => $paged,
+				'prev_text' => '←',
+				'next_text' => '→',
+			]);
+			?>
+		</div>
+
+		<?php
+		wp_reset_postdata();
+
+	else:
+		echo "<p>No posts found.</p>";
+	endif;
+
+	return ob_get_clean();
+}
+
+add_shortcode('articles', 'function_articles');
+
+
+
+
+
 /**
  * Implement the Custom Header feature.
  */

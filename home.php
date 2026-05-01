@@ -19,8 +19,16 @@
                 </div>
 
                 <div class="quick-search">
-                    <input type="text">
-                    <button>Search</button>
+
+
+                    <form method="get" action="">
+                        <input type="text" name="art_search"
+                            value="<?php echo isset($_GET['art_search']) ? esc_attr($_GET['art_search']) : ''; ?>"
+                            placeholder="Search articles...">
+
+                        <button type="submit">Search</button>
+                    </form>
+
                 </div>
 
             </div>
@@ -63,49 +71,8 @@
             </a>
         </div>
 
-        <!-- articles -->
-        <?php if (have_posts()): ?>
-            <div class="articles">
-
-                <?php while (have_posts()):
-                    the_post(); ?>
-
-                    <div class="article-card">
-                        <a href="<?php the_permalink(); ?>">
-                            <?php the_post_thumbnail(); ?>
-                        </a>
-
-                        <div class="info">
-                            <div class="badge"><?php the_category(); ?></div>
-                            <p class="date"><?php echo get_the_date(); ?></p>
-                        </div>
-
-                        <h5 class="post-title"><?php the_title(); ?></h5>
-
-                        <div class="author">
-                            <img src="https://img.magnific.com/premium-vector/user-profile-icon-circle_1256048-12499.jpg"
-                                class="author-img" alt="">
-                            <p><?php the_author(); ?></p>
-                        </div>
-                    </div>
-
-                <?php endwhile; ?>
-
-            </div>
-            <div class="pagination">
-                <?php
-                the_posts_pagination([
-                    'mid_size' => 2,
-                    'prev_text' => '←',
-                    'next_text' => '→',
-                ]);
-                ?>
-            </div>
-
-
-        <?php else: ?>
-            <p>No posts found in this category.</p>
-        <?php endif; ?>
+        <!----------------- articles ------------------->
+        <?php echo do_shortcode('[articles]'); ?>
 
 
 

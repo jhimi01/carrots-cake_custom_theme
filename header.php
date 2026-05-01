@@ -20,9 +20,6 @@
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<!-- <link
-		href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-		rel="stylesheet"> -->
 	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 	<?php wp_head(); ?>
@@ -55,9 +52,6 @@
 					<li><a href="/">FAQ</a></li>
 				</ul>
 			</div>
-			<div class="try-it"><button>
-					Try it Free
-				</button></div>
 
 			<div class="menu-bar">
 				<button class="download">Download the app</button>
@@ -85,9 +79,30 @@
 					</div>
 				</div>
 			</div>
-
+			<div class="nav-search">
+				<form role="search" method="get" action="<?= home_url('/') ?>">
+					<div class="search-wrapper">
+						<!-- search icon SVG -->
+						<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
+							<circle cx="11" cy="11" r="8" />
+							<line x1="21" y1="21" x2="16.65" y2="16.65" />
+						</svg>
+						<input type="search" name="s" placeholder="Search articles…" value="<?= get_search_query() ?>">
+						<button type="submit"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
+							<circle cx="11" cy="11" r="8" />
+							<line x1="21" y1="21" x2="16.65" y2="16.65" />
+						</svg></button>
+					</div>
+				</form>
+			</div>
 
 		</nav>
 
 
+
 	</header><!-- #masthead -->
+	<!-- <div class="header-search">
+		<?php
+		get_search_form();
+		?>
+	</div> -->
