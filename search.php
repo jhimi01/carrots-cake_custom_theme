@@ -11,7 +11,6 @@
 
                 <?php endif; ?>
             </h1>
-
         </div>
 
         <!-- Search results using the same article card layout -->
@@ -19,39 +18,37 @@
             <div class="articles">
                 <?php while (have_posts()):
                     the_post(); ?>
+
                     <div class="article-card">
                         <a href="<?php the_permalink(); ?>">
                             <?php the_post_thumbnail(); ?>
                         </a>
+
                         <div class="info">
-                            <div class="post-categories">
-                                <?php
-                                $post_cats = get_the_category();
-                                foreach ($post_cats as $pc):
-                                    ?>
-                                    <span class="badge">
-                                        <a href="<?= get_category_link($pc->term_id); ?>">
-                                            <?= esc_html($pc->name); ?>
-                                        </a>
-                                    </span>
-                                <?php endforeach; ?>
-                            </div>
+                            <div class="badge"><?php the_category(); ?></div>
                             <p class="date"><?php echo get_the_date(); ?></p>
                         </div>
+
                         <h5 class="post-title"><?php the_title(); ?></h5>
+
                         <div class="author">
                             <img src="https://img.magnific.com/premium-vector/user-profile-icon-circle_1256048-12499.jpg"
-                                class="author-img" alt="">
+                                class="author-img">
                             <p><?php the_author(); ?></p>
                         </div>
+
                     </div>
+
                 <?php endwhile; ?>
             </div>
 
             <div class="pagination">
                 <?php
-                the_posts_pagination([
-                    'mid_size' => 2,
+                echo paginate_links([
+                    'base' => add_query_arg('paged', '%#%'),
+                    'format' => '',
+                    'current' => max(1, $paged),
+                    'total' => $wp_query->max_num_pages,
                     'prev_text' => '←',
                     'next_text' => '→',
                 ]);
@@ -59,19 +56,7 @@
             </div>
 
         <?php else: ?>
-            <div style="text-align:center; padding: 80px 20px;">
-                <h3 style="color: var(--gray); margin-bottom: 16px;">
-                    No results found for "<?php echo get_search_query(); ?>"
-                </h3>
-                <p style="color: var(--gray); margin-bottom: 32px;">
-                    Try different keywords or browse all articles below.
-                </p>
-                <a href="<?= get_permalink(get_option('page_for_posts')); ?>">
-                    <button class="active-btn" style="padding: 12px 28px; font-size: 16px;">
-                        Browse All Articles
-                    </button>
-                </a>
-            </div>
+            <h3>No posts found.</h3>
         <?php endif; ?>
 
         <!-- Subscription section -->

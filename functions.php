@@ -173,18 +173,34 @@ add_action('wp_enqueue_scripts', 'carrotscake_js_link_up');
 
 
 
-// shortcode------------
+// shortcode--------------------
+
+// this is for search.php file issue(only post shows)
+add_action('pre_get_posts', function ($query) {
+	if ($query->is_search() && $query->is_main_query() && !is_admin()) {
+		$query->set('post_type', 'post');
+	}
+});
+
 add_shortcode('articles', 'function_articles');
 function function_articles($atts)
 {
+
+	// it can overide post numbers for per page
 	$atts = shortcode_atts([
-		'posts_per_page' => 4,
+		'posts_per_page' => 1,
 	], $atts);
 
-	$paged = get_query_var('paged') ? get_query_var('paged') : get_query_var('page');
-	$paged = $paged ? $paged : 1;
+	if (is_search()) {
+		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+	} else {
+		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
-	// search input (optional)
+		if (is_front_page() || is_page()) {
+			$paged = (get_query_var('page')) ? get_query_var('page') : 1;
+		}
+	}
+
 	$search = isset($_GET['art_search']) ? sanitize_text_field($_GET['art_search']) : '';
 
 	$args = [
@@ -239,13 +255,12 @@ function function_articles($atts)
 		<div class="pagination">
 			<?php
 			echo paginate_links([
-				'base' => str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999))),
+				'base' => str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999))), //create url
 				'format' => '',
-				'current' => max(4, $paged),
-				'total' => $query->max_num_pages,
+				'current' => max(1, $paged), //Current page number
+				'total' => $query->max_num_pages, //total pages
 				'prev_text' => '←',
 				'next_text' => '→',
-				'add_args' => $search ? ['art_search' => $search] : false,
 			]);
 			?>
 		</div>
@@ -259,7 +274,6 @@ function function_articles($atts)
 
 	return ob_get_clean();
 }
-
 
 
 

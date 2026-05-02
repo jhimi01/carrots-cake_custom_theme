@@ -12,9 +12,9 @@
                 Put an end to screen time tantrums and hours wasted streaming and gaming. Now kids learn first and play
                 later.
             </h5>
-           <div class="btn-sec">
-             <button class="bg-orange">Try it free</button>
-           </div>
+            <div class="btn-sec">
+                <button class="bg-orange">Try it free</button>
+            </div>
         </div>
         <div class="hero-img">
             <img src="<?= get_template_directory_uri(); ?>/assets/images/home_banner.webp" alt="hero img">
