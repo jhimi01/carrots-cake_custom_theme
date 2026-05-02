@@ -729,6 +729,9 @@ footer {
 }
 
 @media (max-width: 900px) {
+  .hero{
+    flex-direction: column;
+  }
   nav .nav-links,
   nav .try-it {
     display: none;
@@ -746,7 +749,7 @@ footer {
     align-items: flex-start;
   }
   .nav-search {
-    display: none; /* hidden in mobile nav — show inside .offens instead */
+    display: none;
   }
 
   .navLinks-dropdown-mobile {
@@ -762,7 +765,6 @@ footer {
   .menu-bar {
     display: flex;
     gap: 20px;
-    /* flex-direction: row; */
   }
   .download,
   .close-btn {
@@ -814,8 +816,12 @@ footer {
     border-radius: 30px;
   }
 
+  footer{
+    background-color: var(--primary-color);
+  }
+
   .footer-content {
-    padding: 60px 60px 20px;
+    padding: 10px 10px 20px;
   }
   .footer-top {
     padding-top: 10px;
