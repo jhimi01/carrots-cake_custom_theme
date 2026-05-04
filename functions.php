@@ -175,7 +175,7 @@ add_action('wp_enqueue_scripts', 'carrotscake_js_link_up');
 
 // shortcode--------------------
 
-// this is for search.php file issue(only post shows)
+// this is for search.php file issue(only post shows not page in the cards)
 add_action('pre_get_posts', function ($query) {
 	if ($query->is_search() && $query->is_main_query() && !is_admin()) {
 		$query->set('post_type', 'post');
@@ -272,7 +272,6 @@ function function_articles($atts)
 
 	return ob_get_clean();
 }
-
 
 
 add_shortcode('contact_section', 'contact');
