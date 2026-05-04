@@ -56,21 +56,6 @@
 			<?php endforeach; ?>
 		</div>
 
-		<div class="small-banner">
-			<div class="small-banner-text-content">
-				<h3>Games That Give Out Free Robux: Real or Scam?</h3>
-				<p>
-					The ultimate truth about Robux-giving games and what actually works Seen those games that give out
-					free Robux advertised everywhere? YouTube ads promising "1000 Robux for playing 5 minutes," TikTok
-					videos showing kids getting "unlimited Robux" from mystery games, or Discord servers claiming you
-					can earn hundreds of Robux just by clicking buttons? Here's the […]
-				</p>
-			</div>
-			<a class="feature-img" href="/">
-				<img src="<?= get_template_directory_uri(); ?>/assets/images/roblox-rain.webp" alt="banner">
-			</a>
-		</div>
-
 		<!-- articles -->
 		<?= do_shortcode('[articles]'); ?>
 

@@ -188,7 +188,7 @@ function function_articles($atts)
 
 	// it can overide post numbers for per page
 	$atts = shortcode_atts([
-		'posts_per_page' => 6,
+		'posts_per_page' => 7,
 	], $atts);
 
 	// pagination handler (it finds the current page number)
@@ -228,7 +228,7 @@ function function_articles($atts)
 				$query->the_post(); ?>
 
 				<div class="article-card">
-					<a href="<?php the_permalink(); ?>">
+					<a class="feature-img" href="<?php the_permalink(); ?>">
 						<?php the_post_thumbnail(); ?>
 					</a>
 
@@ -237,7 +237,14 @@ function function_articles($atts)
 						<p class="date"><?php echo get_the_date(); ?></p>
 					</div>
 
-					<h5 class="post-title"><?php the_title(); ?></h5>
+					<div class="article-content">
+						<a href="<?php the_permalink(); ?>">
+							<h5 class="post-title"><?php the_title(); ?></h5>
+						</a>
+						<p class="excerpt">
+							<?php echo wp_trim_words(get_the_excerpt(), 20); ?>
+						</p>
+					</div>
 
 					<div class="author">
 						<img src="https://img.magnific.com/premium-vector/user-profile-icon-circle_1256048-12499.jpg"
@@ -247,8 +254,8 @@ function function_articles($atts)
 				</div>
 
 			<?php endwhile; ?>
-
 		</div>
+
 
 		<div class="pagination">
 			<?php
