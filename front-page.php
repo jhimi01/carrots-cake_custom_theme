@@ -22,7 +22,7 @@
     </div>
     <?php echo do_shortcode('[articles posts_per_page="4"]'); ?>
 
-    <?= do_shortcode('[contact_section]') ?>
+    <?php get_template_part( 'template-parts/subscription', 'section' ); ?>
 </div>
 
 <?php get_footer(); ?>

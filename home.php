@@ -58,7 +58,7 @@
 
 
         <!-- subscription  -->
-        <?= do_shortcode('[contact_section]') ?>
+        <?= get_template_part( 'template-parts/subscription', 'section' ); ?>
 
 
     </div>

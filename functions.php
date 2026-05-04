@@ -173,14 +173,15 @@ add_action('wp_enqueue_scripts', 'carrotscake_js_link_up');
 
 
 
-// shortcode--------------------
-
 // this is for search.php file issue(only post shows not page in the cards)
 add_action('pre_get_posts', function ($query) {
 	if ($query->is_search() && $query->is_main_query() && !is_admin()) {
 		$query->set('post_type', 'post');
 	}
 });
+
+
+// shortcode--------------------
 
 add_shortcode('articles', 'function_articles');
 function function_articles($atts)
@@ -226,8 +227,9 @@ function function_articles($atts)
 
 			<?php while ($query->have_posts()):
 				$query->the_post(); ?>
+				<?php get_template_part('template-parts/article', 'card'); ?>
 
-				<div class="article-card">
+				<!-- <div class="article-card">
 					<a class="feature-img" href="<?php the_permalink(); ?>">
 						<?php the_post_thumbnail(); ?>
 					</a>
@@ -251,7 +253,7 @@ function function_articles($atts)
 							class="author-img" alt="">
 						<p><?php the_author(); ?></p>
 					</div>
-				</div>
+				</div> -->
 
 			<?php endwhile; ?>
 		</div>
@@ -279,60 +281,6 @@ function function_articles($atts)
 
 	return ob_get_clean();
 }
-
-
-add_shortcode('contact_section', 'contact');
-function contact()
-{
-	ob_start();
-	?>
-	<div class="subscription">
-		<div class="subs-text">
-			<h2>Halve your kids’ overall screen time in 7 days with Carrots&Cake</h2>
-			<h4 class="subs-text-h4">Now you can encourage your little ones to use good educational apps without the
-				tantrums.</h4>
-			<ul>
-				<li>
-					<img src="<?= get_template_directory_uri(); ?>/assets/images/check-mark.webp" alt="check mark">
-					<div>
-						<h4>Increase educational app usage by 200%</h4>
-						<h6>To unblock their games, kids must complete educational apps</h6>
-					</div>
-				</li>
-				<li>
-					<img src="<?= get_template_directory_uri(); ?>/assets/images/check-mark.webp" alt="check mark">
-					<div>
-						<h4>Cut overall screen time in half</h4>
-						<h6>Enhance your family's digital well-being by setting personalized screen time limits.
-						</h6>
-					</div>
-				</li>
-				<li>
-					<img src="<?= get_template_directory_uri(); ?>/assets/images/check-mark.webp" alt="check mark">
-					<div>
-						<h4>Enjoy your first 7 days absolutely free</h4>
-						<h6>Enjoy all the premium features of Carrots&Cake without spending a penny. No credit card
-							required.</h6>
-					</div>
-				</li>
-			</ul>
-			<img class="app-store" src="<?= get_template_directory_uri(); ?>/assets/images/app-store.webp" alt="app-store">
-		</div>
-		<div class="subs-img">
-			<img src="<?= get_template_directory_uri(); ?>/assets/images/roblox-rain.webp" alt="">
-			<form action="">
-				<input type="text" placeholder="Name" name="name">
-				<input type="email" placeholder="Email" name="email">
-				<button>Get a 7-day free trial</button>
-			</form>
-		</div>
-	</div>
-
-	<?php
-
-	return ob_get_clean();
-}
-
 
 
 
