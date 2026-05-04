@@ -191,15 +191,12 @@ function function_articles($atts)
 		'posts_per_page' => 6,
 	], $atts);
 
-	if (is_search()) {
-		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-	} else {
-		$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-
-		if (is_front_page() || is_page()) {
-			$paged = (get_query_var('page')) ? get_query_var('page') : 1;
-		}
-	}
+	// pagination handler (it finds the current page number)
+	$paged = max(
+		1,
+		get_query_var('paged'),
+		get_query_var('page') // for static page (with shortcode)
+	);
 
 	$search = isset($_GET['art_search']) ? sanitize_text_field($_GET['art_search']) : '';
 
@@ -209,6 +206,7 @@ function function_articles($atts)
 		'paged' => $paged,
 	];
 
+	// search when it not empty
 	if (trim($search) !== '') {
 		$args['s'] = $search;
 	}
