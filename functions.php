@@ -188,7 +188,7 @@ function function_articles($atts)
 
 	// it can overide post numbers for per page
 	$atts = shortcode_atts([
-		'posts_per_page' => 1,
+		'posts_per_page' => 6,
 	], $atts);
 
 	if (is_search()) {

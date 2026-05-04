@@ -230,7 +230,8 @@ nav button:hover {
   height: 16px; */
   /* flex-shrink: 0; */
   font-size: 15px;
-  opacity: 0.75;  color: rgba(255, 255, 255, 0.65);
+  opacity: 0.75;
+  color: rgba(255, 255, 255, 0.65);
 }
 
 .nav-search .search-wrapper input {
@@ -258,7 +259,7 @@ nav button:hover {
   align-items: center;
   justify-content: center;
 }
-.src-btn i{
+.src-btn i {
   color: var(--primary-color) !important;
 }
 .nav-search .search-wrapper button:hover {
@@ -316,7 +317,7 @@ nav button:hover {
   justify-content: space-between;
   gap: 20px;
 }
-.hero-text{
+.hero-text {
   display: flex;
   gap: 20px;
   flex-direction: column;
@@ -328,7 +329,7 @@ nav button:hover {
   border-radius: 30px;
   font-size: 24px;
 }
-.btn-sec{
+.btn-sec {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -729,7 +730,7 @@ footer {
 }
 
 @media (max-width: 900px) {
-  .hero{
+  .hero {
     flex-direction: column;
   }
   nav .nav-links,
@@ -816,7 +817,7 @@ footer {
     border-radius: 30px;
   }
 
-  footer{
+  footer {
     background-color: var(--primary-color);
   }
 
