@@ -2,6 +2,8 @@
 <?php $awardBanner = get_field('award_banner'); ?>
 <?php $featuredtitle = get_field('feature_title'); ?>
 <?php $featuredgallery = get_field('feature_brands'); ?>
+<?php $benefits_sections = get_field('benefits_sections'); ?>
+
 
 <!-- <pre>
 <?php print_r($featuredgallery); ?>
@@ -47,6 +49,46 @@
             <?php endif; ?>
         </div>
     </div>
+
+
+
+
+    <?php if ($benefits_sections): ?>
+        <?php foreach ($benefits_sections as $section): ?>
+
+            <section class="benefits-section <?php echo !empty($section['reverse_layout'] == 1) ? 'reverse' : ''; ?>">
+
+
+                <div class="benefits-image">
+                    <?php if (!empty($section['img'])): ?>
+                        <img src="<?php echo esc_url($section['img']['url']); ?>"
+                            alt="<?php echo esc_attr($section['img']['alt']); ?>">
+                    <?php endif; ?>
+                </div>
+
+                <div class="benefits-content">
+
+                    <h3><?php echo esc_html($section['title']); ?></h3>
+
+                    <?php if (!empty($section['list'])): ?>
+                        <?php foreach ($section['list'] as $item): ?>
+                            <div class="benefit-item">
+                                <div class="benefit-text">
+                                    <h4><?php echo esc_html($item['list_title']); ?></h4>
+                                    <h5><?php echo esc_html($item['list_desc']); ?></h5>
+                                </div>
+
+                            </div>
+
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+
+                </div>
+
+            </section>
+
+        <?php endforeach; ?>
+    <?php endif; ?>
 
     <?php echo do_shortcode('[articles posts_per_page="4"]'); ?>
 
