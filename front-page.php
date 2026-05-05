@@ -1,23 +1,26 @@
+<?php $hero= get_field('hero'); ?>
+
+<!-- <pre>
+<?php print_r($hero); ?>
+</pre> -->
+
 <?php get_header(); ?>
 <div class="container">
 
     <div class="hero">
         <div class="hero-text">
 
-            <h1>Chores & Learning First. <span class="text-orange">Robux</span> Later.</h1>
-            <h3>Screentime that teaches <span class="text-orange">
-                    responsibility
-                </span>, not resistance.</h3>
-            <h5>
-                Put an end to screen time tantrums and hours wasted streaming and gaming. Now kids learn first and play
-                later.
-            </h5>
+              <h1><?php echo wp_kses_post($hero['title']); ?></h1>
+           <h3><?php echo wp_kses_post($hero['sub-title']); ?></h3>
+            <h5><?php echo $hero['desc']; ?></h5>
             <div class="btn-sec">
-                <button class="bg-orange">Try it free</button>
+               <a href="<?php echo $hero['button_link'] ?>"> <button class="bg-orange"><?php echo $hero['button_text']; ?></button></a>
             </div>
         </div>
         <div class="hero-img">
-            <img src="<?= get_template_directory_uri(); ?>/assets/images/home_banner.webp" alt="hero img">
+            <?php if(!empty($hero['image'])): ?>
+            <img src="<?php echo $hero['image']['url']; ?>" alt="<?php echo $hero['image']['alt']; ?>">
+        <?php endif; ?>
         </div>
     </div>
     <?php echo do_shortcode('[articles posts_per_page="4"]'); ?>
