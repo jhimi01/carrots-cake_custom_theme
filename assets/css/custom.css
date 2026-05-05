@@ -345,6 +345,16 @@ nav button:hover {
   width: 100%;
 }
 
+.award-banner{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.award-banner img{
+  width: 100%;
+}
+
 /* article page header */
 
 section {

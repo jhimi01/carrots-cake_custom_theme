@@ -1,8 +1,9 @@
 <?php $hero= get_field('hero'); ?>
+<?php $awardBanner= get_field('award_banner'); ?>
 
-<!-- <pre>
-<?php print_r($hero); ?>
-</pre> -->
+<pre>
+<?php print_r($awardBanner); ?>
+</pre>
 
 <?php get_header(); ?>
 <div class="container">
@@ -23,6 +24,13 @@
         <?php endif; ?>
         </div>
     </div>
+
+    <div class="award-banner">
+        <?php if(!empty($awardBanner)): ?>
+        <img src="<?php echo $awardBanner['url']; ?>" alt="<?php echo $awardBanner['alt']; ?>">
+    <?php endif; ?>
+    </div>
+
     <?php echo do_shortcode('[articles posts_per_page="4"]'); ?>
 
     <?php get_template_part( 'template-parts/subscription', 'section' ); ?>
