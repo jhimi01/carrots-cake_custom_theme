@@ -391,11 +391,111 @@ nav button:hover {
   width: 100%;
   color: var(--gray) !important;
 }
+.benefit-item {
+  display: flex;
+  /* gap: 20px; */
+}
+.list-circle {
+  width: 30px;
+  height: 30px;
+  background-color: #f5b767;
+  border-radius: 50%;
+  margin-top: 5px;
+}
+.benefit-text {
+  padding-left: 18px;
+  padding-bottom: 18px;
+}
 .benefits-section.reverse {
   flex-direction: row-reverse;
 }
+.benefits-section.reverse {
+  justify-content: space-between;
+}
+.benefit-image {
+  padding-right: 12px;
+}
+.benefits-content {
+  padding-left: 18px;
+}
 .benefits-content h3 {
+  font-size: 40px;
   font-weight: 700;
+  margin-bottom: 10px;
+}
+.benefit-text h4 {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--gray);
+  padding-bottom: 5px;
+}
+.benefit-text h5 {
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.ad {
+  background-image: linear-gradient(rgba(237, 99, 12, 1), rgba(237, 99, 12, 1));
+  padding-bottom: 20px;
+  padding-top: 20px;
+  border-radius: 71px;
+  align-items: center;
+  flex-direction: row;
+  gap: 70px;
+  display: flex;
+  color: var(--white);
+  text-align: center;
+  margin-top: 150px;
+  margin-bottom: 45px;
+  justify-content: center;
+}
+.ad h4 {
+  color: var(--white);
+}
+.ad h5 {
+  padding: 27px 0;
+  font-weight: 300;
+}
+
+.process {
+  color: var(--white);
+  padding-top: 75px;
+  padding-bottom: 75px;
+  text-align: center;
+}
+.process .icons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 70px;
+  padding: 50px 0;
+}
+.process .icons h4{
+  font-size: 30px;
+  display: flex;
+  gap: 10px;
+}
+.process .icons h4 div{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.process .icons h4 span{
+  color: var(--white);
+}
+
+.start-btn{
+  background: var(--white);
+  color: var(--dark);
+      font-size: 28px;
+    border-radius: 40px;
+        padding: 20px 32px;
 }
 
 /* article page header */
@@ -671,7 +771,6 @@ section {
 }
 .subs-img {
   width: 47.8%;
-  border-radius: 30px;
   overflow: hidden;
 }
 .subs-img img {

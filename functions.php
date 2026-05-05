@@ -223,7 +223,7 @@ function function_articles($atts)
 
 	if ($query->have_posts()):
 		?>
-		<div class="articles">
+		<div class="articles container">
 
 			<?php while ($query->have_posts()):
 				$query->the_post(); ?>
