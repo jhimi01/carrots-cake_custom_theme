@@ -1,7 +1,6 @@
 <?php get_header(); ?>
 
 <div class="page-builder">
-
     <?php if (have_rows('page_sections')): ?>
 
         <?php while (have_rows('page_sections')):
@@ -24,6 +23,10 @@
 
                 <?php get_template_part('template-parts/homepage-sections/featured-section'); ?>
 
+            <?php elseif (get_row_layout() == 'post_feature'): ?>
+
+                <?php get_template_part('template-parts/homepage-sections/articles-section'); ?>
+
             <?php elseif (get_row_layout() == 'benefits_sections'): ?>
 
                 <?php get_template_part('template-parts/homepage-sections/benifits-section'); ?>
@@ -44,9 +47,7 @@
                 </div>
 
             <?php endif; ?>
-
         <?php endwhile; ?>
-
     <?php else: ?>
 
         <!-- debug: no flexible content found -->
@@ -58,7 +59,5 @@
 
     <?php get_template_part('template-parts/homepage-sections/articles-section'); ?>
 
-
 </div>
-
 <?php get_footer(); ?>
