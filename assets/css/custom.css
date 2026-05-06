@@ -356,10 +356,10 @@ nav button:hover {
   width: 100%;
 }
 
-.featur-section {
+.featured-section {
   margin-bottom: 120px;
 }
-.featur-section h3 {
+.featured-section h3 {
   text-align: center;
   margin-bottom: 70px;
   color: var(--gray);

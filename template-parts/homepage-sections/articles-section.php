@@ -1,0 +1,1 @@
+<?php echo do_shortcode('[articles posts_per_page="4"]');

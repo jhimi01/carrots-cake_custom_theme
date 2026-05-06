@@ -1,7 +1,7 @@
 <?php
 $title = get_sub_field('title');
 $subtitle = get_sub_field('subtitle');
-$desc = get_sub_field('description'); // make sure name matches ACF
+$desc = get_sub_field('desc'); 
 $btn_text = get_sub_field('button_text');
 $btn_link = get_sub_field('button_link');
 $image = get_sub_field('hero_image');
