@@ -1,15 +1,31 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const menuBtn = document.querySelector(".menu-icon");
-    const closeBtn = document.querySelector(".close-btn");
-    const menu = document.querySelector(".offens");
+  const menuBtn = document.querySelector(".menu-icon");
+  const closeBtn = document.querySelector(".close-btn");
+  const menu = document.querySelector(".offens");
 
-    // Open menu
-    menuBtn.addEventListener("click", function () {
-        menu.classList.add("active");
-    });
+  // Open menu
+  menuBtn.addEventListener("click", function () {
+    menu.classList.add("active");
+  });
 
-    // Close menu
-    closeBtn.addEventListener("click", function () {
-        menu.classList.remove("active");
-    });
+  // Close menu
+  closeBtn.addEventListener("click", function () {
+    menu.classList.remove("active");
+  });
+});
+
+// jquery
+jQuery(document).ready(function ($) {
+  $(".faq-question").click(function () {
+    const currentItem = $(this).parent();
+
+    $(".faq-item")
+      .not(currentItem)
+      .removeClass("active")
+      .find(".faq-answer")
+      .slideUp();
+
+    currentItem.toggleClass("active");
+    currentItem.find(".faq-answer").slideToggle();
+  });
 });

@@ -48,7 +48,7 @@
 					</li>
 					<li><a href="/">About</a></li>
 					<li><a href="/">Contributors</a></li>
-					<li><a href="/">FAQ</a></li>
+					<li><a href="/faq">FAQ</a></li>
 				</ul>
 			</div>
 
@@ -73,7 +73,7 @@
 							</li>
 							<li><a href="/">About</a></li>
 							<li><a href="/">Contributors</a></li>
-							<li><a href="/">FAQ</a></li>
+							<li><a href="/faq">FAQ</a></li>
 						</ul>
 					</div>
 				</div>

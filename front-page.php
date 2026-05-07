@@ -43,6 +43,10 @@
 
                 get_template_part('template-parts/homepage-sections/ad');
 
+            elseif (get_row_layout() == 'faq_section'):
+
+                get_template_part('template-parts/homepage-sections/faq-section');
+
             else: ?>
 
                 <!-- debug: unknown layout -->
