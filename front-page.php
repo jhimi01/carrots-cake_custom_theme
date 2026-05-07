@@ -1,45 +1,49 @@
 <?php get_header(); ?>
 
 <div class="page-builder">
-    <?php if (have_rows('page_sections')): ?>
+    <?php if (have_rows('page_sections')):
 
-        <?php while (have_rows('page_sections')):
-            the_row(); ?>
+        while (have_rows('page_sections')):
+            the_row();
 
-            <!-- debug: show current layout -->
-            <!-- <div style="background:#000; color:#0f0; padding:5px; font-size:12px;">
-                Current Layout: <?php echo get_row_layout(); ?>
-            </div> -->
+            // <!-- debug: show current layout -->
+            //  <div style="background:#000; color:#0f0; padding:5px; font-size:12px;">
+            // Current Layout:  echo get_row_layout();
+            // </div> 
+    
+            if (get_row_layout() == 'video_banner'):
 
-            <?php if (get_row_layout() == 'hero'): ?>
+                get_template_part('template-parts/homepage-sections/video-banner');
 
-                <?php get_template_part('template-parts/homepage-sections/hero-section'); ?>
+            elseif (get_row_layout() == 'hero'):
 
-            <?php elseif (get_row_layout() == 'award_banner'): ?>
+                get_template_part('template-parts/homepage-sections/hero-section');
 
-                <?php get_template_part('template-parts/homepage-sections/awardbanner-section'); ?>
+            elseif (get_row_layout() == 'award_banner'):
 
-            <?php elseif (get_row_layout() == 'featured_brands'): ?>
+                get_template_part('template-parts/homepage-sections/awardbanner-section');
 
-                <?php get_template_part('template-parts/homepage-sections/featured-section'); ?>
+            elseif (get_row_layout() == 'featured_brands'):
 
-            <?php elseif (get_row_layout() == 'post_feature'): ?>
+                get_template_part('template-parts/homepage-sections/featured-section');
 
-                <?php get_template_part('template-parts/homepage-sections/articles-section'); ?>
+            elseif (get_row_layout() == 'post_feature'):
 
-            <?php elseif (get_row_layout() == 'benefits_sections'): ?>
+                get_template_part('template-parts/homepage-sections/articles-section');
 
-                <?php get_template_part('template-parts/homepage-sections/benifits-section'); ?>
+            elseif (get_row_layout() == 'benefits_sections'):
 
-            <?php elseif (get_row_layout() == 'cta__process'): ?>
+                get_template_part('template-parts/homepage-sections/benifits-section');
 
-                <?php get_template_part('template-parts/homepage-sections/process'); ?>
+            elseif (get_row_layout() == 'cta__process'):
 
-            <?php elseif (get_row_layout() == 'ad_section'): ?>
+                get_template_part('template-parts/homepage-sections/process');
 
-                <?php get_template_part('template-parts/homepage-sections/ad'); ?>
+            elseif (get_row_layout() == 'ad_section'):
 
-            <?php else: ?>
+                get_template_part('template-parts/homepage-sections/ad');
+
+            else: ?>
 
                 <!-- debug: unknown layout -->
                 <div style="background:red; color:white; padding:10px;">
@@ -57,7 +61,6 @@
 
     <?php endif; ?>
 
-    <?php get_template_part('template-parts/homepage-sections/articles-section'); ?>
 
 </div>
 <?php get_footer(); ?>

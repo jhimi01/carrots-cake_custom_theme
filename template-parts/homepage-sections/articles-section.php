@@ -14,7 +14,6 @@ $postobject = get_sub_field('post_object');
 
 <section class="home-article">
 
-
     <h2><?php echo $title; ?></h2>
     <div class="articles container">
 
@@ -43,7 +42,6 @@ $postobject = get_sub_field('post_object');
 
         <?php endforeach; ?>
     <?php endif; ?> -->
-
 
     <!-- <?php if ($postobject): ?>
 
