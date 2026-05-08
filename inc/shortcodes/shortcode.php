@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 add_shortcode('articles', 'function_articles');
 function function_articles($atts)
@@ -43,10 +43,9 @@ function function_articles($atts)
         <div class="articles container">
 
             <?php while ($query->have_posts()):
-                $query->the_post(); ?>
-                <?php get_template_part('template-parts/article', 'card'); ?>
-
-            <?php endwhile; ?>
+                $query->the_post();
+                get_template_part('template-parts/article', 'card');
+            endwhile; ?>
         </div>
 
 

@@ -15,6 +15,10 @@
 
                 get_template_part('template-parts/homepage-sections/video-banner');
 
+            elseif (get_row_layout() == 'post_list'):
+
+                get_template_part('template-parts/homepage-sections/post-list');
+
             elseif (get_row_layout() == 'hero'):
 
                 get_template_part('template-parts/homepage-sections/hero-section');
@@ -27,10 +31,10 @@
 
                 get_template_part('template-parts/homepage-sections/featured-section');
 
-            elseif (get_row_layout() == 'post_feature'):
-
-                get_template_part('template-parts/homepage-sections/articles-section');
-
+                // elseif (get_row_layout() == 'post_feature'):
+    
+                //     get_template_part('template-parts/homepage-sections/articles-section');
+    
             elseif (get_row_layout() == 'benefits_sections'):
 
                 get_template_part('template-parts/homepage-sections/benifits-section');
@@ -50,9 +54,9 @@
             else: ?>
 
                 <!-- debug: unknown layout -->
-                <div style="background:red; color:white; padding:10px;">
+                <!-- <div style="background:red; color:white; padding:10px;">
                     Unknown layout: <?php echo get_row_layout(); ?>
-                </div>
+                </div> -->
 
             <?php endif; ?>
         <?php endwhile; ?>

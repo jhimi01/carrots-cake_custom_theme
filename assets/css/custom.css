@@ -388,8 +388,25 @@ nav button:hover {
   color: var(--dark);
 }
 
+.post-list-title {
+  text-align: center;
+  color: var(--gray);
+  margin-top: 30px;
+}
+.load-more-container {
+  display: flex;
+  justify-content: center;
+}
+.load-more-btn {
+  padding: 14px 32px;
+  color: var(--white);
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
 /* ------ faq section ------ */
-.faq-section{
+.faq-section {
   margin: 60px 0;
 }
 .faq-heading {
@@ -437,8 +454,8 @@ nav button:hover {
   line-height: 1.7;
 }
 .faq-answer p {
-    margin-bottom: 16px;
-    line-height: 1.7;
+  margin-bottom: 16px;
+  line-height: 1.7;
 }
 
 .faq-item.active .faq-icon {
@@ -483,7 +500,7 @@ nav button:hover {
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-bottom: 82px;
+  margin: 82px auto;
 }
 
 .award-banner img {
@@ -636,8 +653,6 @@ nav button:hover {
   border-radius: 40px;
   padding: 20px 32px;
 }
-
-
 
 /* --------- article page header --------- */
 
