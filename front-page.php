@@ -19,6 +19,10 @@
 
                 get_template_part('template-parts/homepage-sections/post-list');
 
+            elseif (get_row_layout() == 'content_list'):
+
+                get_template_part('template-parts/homepage-sections/loadmore-content');
+
             elseif (get_row_layout() == 'hero'):
 
                 get_template_part('template-parts/homepage-sections/hero-section');

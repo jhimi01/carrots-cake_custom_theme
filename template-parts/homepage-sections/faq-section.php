@@ -3,42 +3,38 @@ $title = get_sub_field('title');
 $faq = get_sub_field('q_&_a');
 ?>
 
+<?php if ($faq): ?>
+    <section class="faq-section ">
+        <div class="container">
+            <h3 class="faq-heading"><?php echo $title ?></h3>
+            <div class="faq-items">
 
-<!-- <pre>
-<?php echo print_r($faq); ?>
-</pre> -->
+                <?php foreach ($faq as $item): ?>
 
+                    <div class="faq-item">
 
-<?php if ($faq) : ?>
-<section class="faq-section container">
- <h3 class="faq-heading"><?php echo $title ?></h3>
-    <div class="faq-items">
+                        <div class="faq-question">
 
-        <?php foreach ($faq as $item) : ?>
+                            <h3>
+                                <?= $item['qns']; ?>
+                            </h3>
 
-            <div class="faq-item">
+                            <span class="faq-icon">+</span>
 
-                <div class="faq-question">
+                        </div>
 
-                    <h3>
-                        <?= $item['qns']; ?>
-                    </h3>
+                        <div class="faq-answer">
 
-                    <span class="faq-icon">+</span>
+                            <?= wpautop(wp_kses_post($item['ans'])); ?>
 
-                </div>
+                        </div>
 
-                <div class="faq-answer">
+                    </div>
 
-                   <?= wpautop(wp_kses_post($item['ans'])); ?>
-
-                </div>
+                <?php endforeach; ?>
 
             </div>
+        </div>
 
-        <?php endforeach; ?>
-
-    </div>
-
-</section>
+    </section>
 <?php endif; ?>

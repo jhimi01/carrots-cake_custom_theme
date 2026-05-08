@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // jquery
+// faq section --------------
 jQuery(document).ready(function ($) {
   $(".faq-question").click(function () {
     const currentItem = $(this).parent();
@@ -30,10 +31,14 @@ jQuery(document).ready(function ($) {
   });
 });
 
-// load more posts with ajax
+// load more posts with ajax ----------------
 jQuery(document).ready(function ($) {
   $(".load-more-btn").click(function () {
     const btn = $(this);
+
+    // console.log("load btn", btn);
+    // console.log("load btn text", btn.innerText);
+    // console.log("load btn html", btn.innerHtml);
 
     let currentPage = parseInt(btn.data("page"));
     const maxPages = parseInt(btn.data("max-pages"));
@@ -79,3 +84,70 @@ jQuery(document).ready(function ($) {
     });
   });
 });
+
+// load more contetns with ajax
+jQuery(document).ready(function ($) {
+  $(".get-more-btn").click(function () {
+    const contentBtn = $(this);
+
+    let currentPage = parseInt(contentBtn.data("page"));
+    const maxPages = parseInt(contentBtn.data("max-pages"));
+    // const contentsPerPage = parseInt(contentBtn.data("contentsPerPage"));
+    const contentsPerPage = parseInt(contentBtn.data("contents-per-page"));
+    const postId = parseInt(contentBtn.data("post-id"));
+
+    console.log("contentBtn", postId);
+
+    let nextPage = currentPage + 1;
+
+    if (nextPage > maxPages) return;
+
+    contentBtn.text("Getting...").prop("disabled", true);
+
+    //sending request to wp backend
+    $.ajax({
+      url: ajax_params.ajax_url,
+      type: "POST",
+      data: {
+        action: "get_more_contents",
+        nonce: ajax_params.nonce,
+        page: nextPage,
+        post_id: postId,
+        per_page_content: contentsPerPage,
+      },
+
+      success: function (res) {
+        if (res.success) {
+          // $(".contents").append(res.data.html);
+          //  $(".contents").append(res.data.html);
+          contentBtn
+            .closest(".content-lists")
+            .find(".contents")
+            .append(res.data.html);
+          console.log("this is res", res);
+
+          contentBtn.data("page", nextPage);
+
+          if (!res.data.has_more) {
+            contentBtn.hide();
+            console.log("this is res", res);
+          } else {
+            contentBtn.text("Get More Content").prop("disabled", false);
+            console.log("this is res", res);
+          }
+        } else {
+          // contentBtn.closest(".get-more-btn").hide();
+          contentBtn.text(res.data.message)
+          console.log("this is res", res);
+        }
+      },
+
+      error: function (err) {
+        console.log("error", err);
+        contentBtn.text("Error").prop("disabled", false);
+      },
+    });
+  });
+});
+
+

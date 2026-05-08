@@ -197,7 +197,7 @@ function load_more_posts_handler()
 	check_ajax_referer('load_more_nonce', 'nonce'); //for security
 
 	$page = isset($_POST['page']) ? intval($_POST['page']) : 1;
-	$posts_per_page = isset($_POST['posts_per_page']) ? intval($_POST['posts_per_page']) : 4;
+	$posts_per_page = isset($_POST['posts_per_page']) ? intval($_POST['posts_per_page']) : 3;
 
 	$args = [
 		'post_type' => 'post',
@@ -231,6 +231,63 @@ function load_more_posts_handler()
 		'has_more' => $has_more
 	]);
 }
+;
+
+
+// get more contents
+
+add_action('wp_ajax_get_more_contents', 'get_more_contents_handler');
+add_action('wp_ajax_nopriv_get_more_contents', 'get_more_contents_handler');
+
+function get_more_contents_handler()
+{
+
+	$page = isset($_POST['page']) ? intval($_POST['page']) : 1;
+	$post_id = isset($_POST['post_id']) ? intval($_POST['post_id']) : 0;
+	$contents_per_page = isset($_POST['per_page_content']) ? intval($_POST['per_page_content']) : 3;
+
+	// get reapeter field
+	$contents = get_field('contents', $post_id);
+
+	if (!$contents) {
+		wp_send_json_error([
+			'message' => 'No contents found'
+		]);
+	}
+
+	// offset pagination math
+	$offset = ($page - 1) * $contents_per_page; //skip items according to the number
+
+	//slice array
+	$sliced_contents = array_slice(
+		$contents,
+		$offset,
+		$contents_per_page
+	);
+
+
+	ob_start();
+	foreach ($sliced_contents as $content): ?>
+		<div class="content-card">
+			<img src="<?php echo $content['img']['url'] ?>" alt="<?php echo $content['img']['alt'] ?>">
+			<h4><?php echo $content['content_title'] ?></h4>
+		</div>
+	<?php endforeach;
+
+	$html = ob_get_clean();
+
+	$max_pages = ceil(count($contents) / $contents_per_page);
+
+	$has_more = $page < $max_pages;
+
+	wp_send_json_success([
+		'html' => $html,
+		'has_more' => $has_more,
+	]);
+}
+;
+
+
 
 // Localize script to pass AJAX URL and nonce (JS bridge for connecting php -> js)
 add_action('wp_enqueue_scripts', function () {
