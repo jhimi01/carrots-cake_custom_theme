@@ -24,7 +24,7 @@ $categories = get_categories([
     <div>
         <h2 class="post-list-title"><?php echo $title ?></h2>
         <div class="filter-container">
-            <select name="category" id="category-filter">
+            <select name="category-filter" id="category-filter">
                 <option value="">All category</option>
                 <?php
                 foreach ($categories as $category):
@@ -36,15 +36,15 @@ $categories = get_categories([
             </select>
             <select name="sort" id="sort">
                 <option value="">Sort By</option>
-                <option value="">A-Z</option>
-                <option value="">Z-A</option>
-                <option value="">Oldest to Newest</option>
-                <option value="">Newest to Oldest</option>
+                <option value="title_asc">A-Z</option>
+                <option value="title_desc">Z-A</option>
+                <option value="old">Oldest to Newest</option>
+                <option value="new">Newest to Oldest</option>
             </select>
         </div>
     </div>
     <?php if ($query->have_posts()): ?>
-        <div class="articles">
+        <div class="articles" id="article-container">
             <?php while ($query->have_posts()):
                 $query->the_post();
                 get_template_part('template-parts/article-card');

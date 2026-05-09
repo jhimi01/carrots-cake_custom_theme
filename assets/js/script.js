@@ -39,7 +39,6 @@ jQuery(document).ready(function ($) {
     // console.log("load btn", btn);
     // console.log("load btn text", btn.innerText);
     // console.log("load btn html", btn.innerHtml);
-
     let currentPage = parseInt(btn.data("page"));
     const maxPages = parseInt(btn.data("max-pages"));
     const postsPerPage = parseInt(btn.data("posts-per-page"));
@@ -84,6 +83,47 @@ jQuery(document).ready(function ($) {
     });
   });
 });
+
+// filter and sort with ajax -----------------
+jQuery(document).ready(function ($) {
+  $("#category-filter, #sort").change(function () {
+    const categoryFilter = $("#category-filter").val();
+    const sort = $("#sort").val();
+    const btn = $(".load-more-btn");
+    const postPerPage = parseInt(btn.data("posts-per-page"));
+
+    // console.log('first', categoryFilter)
+
+
+    $.ajax({
+      url: ajax_params.ajax_url,
+      type: "POST",
+      data: {
+        action: "load_more_posts",
+        nonce: ajax_params.nonce,
+        // page: 1,
+        categoryFilter: categoryFilter,
+        sortFilter: sort,
+        posts_per_page: postPerPage,
+      },
+
+      success: function(response){
+        if (response.success) {
+          $(".articles").html(response.data.html);
+          $(".load-more-btn").data("page", 1);
+            // btn.data("page", 1);
+        }else{
+          console.log('not success', response);
+        }
+        console.log("filtering", response)
+      },
+
+      error: function(err){
+        console.log("error", err)
+      }
+    })
+  })
+})
 
 // load more contetns with ajax
 jQuery(document).ready(function ($) {

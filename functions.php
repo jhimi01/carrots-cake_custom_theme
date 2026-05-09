@@ -198,15 +198,36 @@ function load_more_posts_handler()
 
 	$page = isset($_POST['page']) ? intval($_POST['page']) : 1;
 	$posts_per_page = isset($_POST['posts_per_page']) ? intval($_POST['posts_per_page']) : 3;
+	$categoryFilter = isset($_POST['categoryFilter']) ? ($_POST['categoryFilter']) : '';
+	$sortFilter = isset($_POST['sortFilter']) ? ($_POST['sortFilter']) : '';
 
 	$args = [
 		'post_type' => 'post',
 		'posts_per_page' => $posts_per_page,
 		'post_status' => 'publish',
-		'orderby' => 'date',
-		'order' => 'DESC',
 		'paged' => $page,
 	];
+
+	if ($categoryFilter) {
+		$args['category_name'] = $categoryFilter;
+	}
+
+	if ($sortFilter) {
+		if ($sortFilter == 'title_asc') {
+			$args['orderby'] = 'title';
+			$args['order'] = 'ASC';
+		} elseif ($sortFilter == 'title_desc') {
+			$args['orderby'] = 'title';
+			$args['order'] = 'DESC';
+		} elseif ($sortFilter == 'old') {
+			$args['orderby'] = 'date';
+			$args['order'] = 'ASC';
+		} elseif ($sortFilter == 'new') {
+			$args['orderby'] = 'date';
+			$args['order'] = 'DESC';
+		} 
+	}
+	;
 
 	$query = new WP_Query($args);
 
@@ -234,8 +255,7 @@ function load_more_posts_handler()
 ;
 
 
-// get more contents
-
+// get more contents -------------
 add_action('wp_ajax_get_more_contents', 'get_more_contents_handler');
 add_action('wp_ajax_nopriv_get_more_contents', 'get_more_contents_handler');
 
