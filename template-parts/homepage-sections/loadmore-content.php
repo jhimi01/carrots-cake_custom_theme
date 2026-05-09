@@ -12,9 +12,9 @@ $inital_contents = array_slice($contents, 0, $per_page_content);
 
 ?>
 
-<pre>
+<!-- <pre>
     <?php print_r($contents); ?>
- </pre>
+ </pre> -->
 
 
 <section class="container">

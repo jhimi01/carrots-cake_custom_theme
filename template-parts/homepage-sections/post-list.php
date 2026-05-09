@@ -12,11 +12,37 @@ $args = [
 ];
 
 $query = new WP_Query($args);
-?>
+
+$categories = get_categories([
+    'taxonomy' => 'category',
+    'hide_empty' => true
+])
+
+    ?>
 
 <section class="container">
-    <h2 class="post-list-title"><?php echo $title ?></h2>
-
+    <div>
+        <h2 class="post-list-title"><?php echo $title ?></h2>
+        <div class="filter-container">
+            <select name="category" id="category-filter">
+                <option value="">All category</option>
+                <?php
+                foreach ($categories as $category):
+                    if ($category->slug === 'uncategorized')
+                        continue;
+                    ?>
+                    <option value="<?php echo $category->slug; ?>"><?php echo $category->name; ?></option>
+                <?php endforeach; ?>
+            </select>
+            <select name="sort" id="sort">
+                <option value="">Sort By</option>
+                <option value="">A-Z</option>
+                <option value="">Z-A</option>
+                <option value="">Oldest to Newest</option>
+                <option value="">Newest to Oldest</option>
+            </select>
+        </div>
+    </div>
     <?php if ($query->have_posts()): ?>
         <div class="articles">
             <?php while ($query->have_posts()):
