@@ -42,7 +42,7 @@ jQuery(document).ready(function ($) {
     let currentPage = parseInt(btn.data("page"));
     const maxPages = parseInt(btn.data("max-pages"));
     const postsPerPage = parseInt(btn.data("posts-per-page"));
-    console.log("current page", postsPerPage);
+    // console.log("current page", postsPerPage);
 
     let nextPage = currentPage + 1;
 
@@ -84,16 +84,15 @@ jQuery(document).ready(function ($) {
   });
 });
 
-// filter and sort with ajax -----------------
+// filter and sort and search with ajax -----------------
 jQuery(document).ready(function ($) {
-  $("#category-filter, #sort").change(function () {
+  function loadPost() {
     const categoryFilter = $("#category-filter").val();
     const sort = $("#sort").val();
+    const searchField = $("#search-articles").val();
     const btn = $(".load-more-btn");
     const postPerPage = parseInt(btn.data("posts-per-page"));
-
-    // console.log('first', categoryFilter)
-
+    // console.log("first", searchField);
 
     $.ajax({
       url: ajax_params.ajax_url,
@@ -104,26 +103,31 @@ jQuery(document).ready(function ($) {
         // page: 1,
         categoryFilter: categoryFilter,
         sortFilter: sort,
+        search: searchField,
         posts_per_page: postPerPage,
       },
 
-      success: function(response){
+      success: function (response) {
         if (response.success) {
           $(".articles").html(response.data.html);
           $(".load-more-btn").data("page", 1);
-            // btn.data("page", 1);
-        }else{
-          console.log('not success', response);
+          // btn.data("page", 1);
+        } else {
+          console.log("not success", response);
         }
-        console.log("filtering", response)
+        console.log("filtering", response);
       },
 
-      error: function(err){
-        console.log("error", err)
-      }
-    })
-  })
-})
+      error: function (err) {
+        console.log("error", err);
+      },
+    });
+  }
+  $("#category-filter, #sort").on("change", loadPost);
+  $("#search-articles").on("keypress", loadPost);
+  // $(".load-more-btn").on("click", loadPost);
+});
+
 
 // load more contetns with ajax
 jQuery(document).ready(function ($) {
@@ -177,7 +181,7 @@ jQuery(document).ready(function ($) {
           }
         } else {
           // contentBtn.closest(".get-more-btn").hide();
-          contentBtn.text(res.data.message)
+          contentBtn.text(res.data.message);
           console.log("this is res", res);
         }
       },
@@ -189,5 +193,3 @@ jQuery(document).ready(function ($) {
     });
   });
 });
-
-

@@ -200,6 +200,7 @@ function load_more_posts_handler()
 	$posts_per_page = isset($_POST['posts_per_page']) ? intval($_POST['posts_per_page']) : 3;
 	$categoryFilter = isset($_POST['categoryFilter']) ? ($_POST['categoryFilter']) : '';
 	$sortFilter = isset($_POST['sortFilter']) ? ($_POST['sortFilter']) : '';
+	$search = isset($_POST['search']) ? ($_POST['search']) : '';
 
 	$args = [
 		'post_type' => 'post',
@@ -227,7 +228,10 @@ function load_more_posts_handler()
 			$args['order'] = 'DESC';
 		} 
 	}
-	;
+	
+	if($search){
+		$args['s'] = $search;
+	}
 
 	$query = new WP_Query($args);
 

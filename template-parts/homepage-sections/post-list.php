@@ -24,23 +24,29 @@ $categories = get_categories([
     <div>
         <h2 class="post-list-title"><?php echo $title ?></h2>
         <div class="filter-container">
-            <select name="category-filter" id="category-filter">
-                <option value="">All category</option>
-                <?php
-                foreach ($categories as $category):
-                    if ($category->slug === 'uncategorized')
-                        continue;
-                    ?>
-                    <option value="<?php echo $category->slug; ?>"><?php echo $category->name; ?></option>
-                <?php endforeach; ?>
-            </select>
-            <select name="sort" id="sort">
-                <option value="">Sort By</option>
-                <option value="title_asc">A-Z</option>
-                <option value="title_desc">Z-A</option>
-                <option value="old">Oldest to Newest</option>
-                <option value="new">Newest to Oldest</option>
-            </select>
+            <div class="search-field">
+                <input type="text" placeholder="Search articles..." name="search" id="search-articles">
+            </div>
+            <div>
+
+                <select name="category-filter" id="category-filter">
+                    <option value="">All category</option>
+                    <?php
+                    foreach ($categories as $category):
+                        if ($category->slug === 'uncategorized')
+                            continue;
+                        ?>
+                        <option value="<?php echo $category->slug; ?>"><?php echo $category->name; ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <select name="sort" id="sort">
+                    <option value="">Sort By</option>
+                    <option value="title_asc">A-Z</option>
+                    <option value="title_desc">Z-A</option>
+                    <option value="old">Oldest to Newest</option>
+                    <option value="new">Newest to Oldest</option>
+                </select>
+            </div>
         </div>
     </div>
     <?php if ($query->have_posts()): ?>
