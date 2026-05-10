@@ -35,14 +35,10 @@ jQuery(document).ready(function ($) {
 jQuery(document).ready(function ($) {
   $(".load-more-btn").click(function () {
     const btn = $(this);
-
-    // console.log("load btn", btn);
-    // console.log("load btn text", btn.innerText);
-    // console.log("load btn html", btn.innerHtml);
     let currentPage = parseInt(btn.data("page"));
     const maxPages = parseInt(btn.data("max-pages"));
     const postsPerPage = parseInt(btn.data("posts-per-page"));
-    // console.log("current page", postsPerPage);
+    console.log("current page", postsPerPage);
 
     let nextPage = currentPage + 1;
 
@@ -66,6 +62,8 @@ jQuery(document).ready(function ($) {
           $(".articles").append(response.data.html);
 
           btn.data("page", nextPage);
+
+          console.log('has more', response.data.has_more)
 
           if (!response.data.has_more) {
             btn.closest(".load-more-container").hide();
@@ -91,7 +89,6 @@ jQuery(document).ready(function ($) {
     const sort = $("#sort").val();
     const searchField = $("#search-articles").val();
     const btn = $(".load-more-btn");
-    const postPerPage = parseInt(btn.data("posts-per-page"));
     // console.log("first", searchField);
 
     $.ajax({
@@ -100,18 +97,15 @@ jQuery(document).ready(function ($) {
       data: {
         action: "load_more_posts",
         nonce: ajax_params.nonce,
-        // page: 1,
         categoryFilter: categoryFilter,
         sortFilter: sort,
         search: searchField,
-        posts_per_page: postPerPage,
       },
 
       success: function (response) {
         if (response.success) {
           $(".articles").html(response.data.html);
           $(".load-more-btn").data("page", 1);
-          // btn.data("page", 1);
         } else {
           console.log("not success", response);
         }
@@ -124,10 +118,8 @@ jQuery(document).ready(function ($) {
     });
   }
   $("#category-filter, #sort").on("change", loadPost);
-  $("#search-articles").on("keypress", loadPost);
-  // $(".load-more-btn").on("click", loadPost);
+  $("#search-articles").on("input", loadPost);
 });
-
 
 // load more contetns with ajax
 jQuery(document).ready(function ($) {

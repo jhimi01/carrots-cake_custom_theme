@@ -187,7 +187,7 @@ add_action('pre_get_posts', function ($query) {
 });
 
 
-// load more posts with AJAX -------------
+// load more, category filter, sorting, search posts with AJAX -------------
 add_action('wp_ajax_load_more_posts', 'load_more_posts_handler'); //for loggedIn user access
 add_action('wp_ajax_nopriv_load_more_posts', 'load_more_posts_handler'); // for visitors access
 

@@ -1,14 +1,13 @@
 <?php
 $title = get_sub_field('title');
-$postposts_per_page = get_sub_field('postposts_per_page') ?: 4;
+$posts_per_page = get_sub_field('posts_per_page') ;
 $btn = get_sub_field('button');
+$inital_posts = 4;
 
 $args = [
     'post_type' => 'post',
-    'posts_per_page' => $postposts_per_page,
+    'posts_per_page' => $inital_posts,
     'post_status' => 'publish',
-    'orderby' => 'date',
-    'order' => 'DESC',
 ];
 
 $query = new WP_Query($args);
@@ -62,7 +61,7 @@ $categories = get_categories([
         <!-- Hide button if only 1 page -->
         <div class="load-more-container">
             <button class="load-more-btn bg-orange" data-page="1" data-max-pages="<?php echo $query->max_num_pages; ?>"
-                data-posts-per-page="<?php echo $postposts_per_page; ?>">
+                data-posts-per-page="<?php echo $posts_per_page; ?>" data-initial-posts="4">
                 <?php echo $btn ?>
             </button>
         </div>
