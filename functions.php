@@ -268,17 +268,40 @@ add_action('wp_ajax_nopriv_get_more_contents', 'get_more_contents_handler');
 
 function get_more_contents_handler()
 {
+	check_ajax_referer('load_more_nonce', 'nonce'); //for security
 
-	$page = isset($_POST['page']) ? intval($_POST['page']) : 1;
-	$post_id = isset($_POST['post_id']) ? intval($_POST['post_id']) : 0;
-	$contents_per_page = isset($_POST['per_page_content']) ? intval($_POST['per_page_content']) : 3;
+	// if (!function_exists('get_field')) {
+	// 	wp_send_json_error([
+	// 		'message' => 'ACF not loaded'
+	// 	]);
+	// }
+
+	$page = isset($_POST['page']) ? ($_POST['page']) : 1;
+	$post_id = isset($_POST['post_id']) ? ($_POST['post_id']) : 0;
+	$contents_per_page = isset($_POST['per_page_content']) ? ($_POST['per_page_content']) : 3;
+
+
+	// if (!$post_id) {
+	// 	wp_send_json_error(['message' => 'missing post Id']);
+	// }
 
 	// get reapeter field
-	$contents = get_field('contents', $post_id);
+	$page_sections = get_field('page_sections', $post_id);
+	$contents = [];
 
-	if (!$contents) {
+
+	if ($page_sections) {
+		foreach ($page_sections as $section) {
+			if ($section['acf_fc_layout'] == 'content_list') {
+				$contents = $section['contents'] ?? [];
+			}
+		}
+	}
+
+	if (empty($contents) || !is_array($contents)) {
 		wp_send_json_error([
-			'message' => 'No contents found'
+			'message' => 'ACF repeater not found or empty',
+			'post_id' => $post_id
 		]);
 	}
 
@@ -303,16 +326,15 @@ function get_more_contents_handler()
 
 	$html = ob_get_clean();
 
-	$max_pages = ceil(count($contents) / $contents_per_page);
+	// $max_pages = ceil(count($contents) / $contents_per_page);
 
-	$has_more = $page < $max_pages;
+	// $has_more = $page < $max_pages;
 
 	wp_send_json_success([
 		'html' => $html,
 		'has_more' => $has_more,
 	]);
-}
-;
+};
 
 
 
