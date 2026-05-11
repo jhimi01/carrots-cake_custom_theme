@@ -121,6 +121,8 @@ jQuery(document).ready(function ($) {
   $("#search-articles").on("input", loadPost);
 });
 
+
+
 // load more contetns with ajax
 jQuery(document).ready(function ($) {
   $(".get-more-btn").click(function () {
