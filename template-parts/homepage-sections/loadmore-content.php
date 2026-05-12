@@ -2,11 +2,7 @@
 $title = get_sub_field('title');
 $btn = get_sub_field('button');
 $per_page_content = 3;
-// $contents = get_sub_field('contents'); // all repeater contents
 $total_rows = count(get_sub_field('contents'));
-
-// $total_contents = count($contents);
-
 ?>
 
 <!-- <pre>
@@ -19,7 +15,7 @@ $total_rows = count(get_sub_field('contents'));
     <div class="content-lists">
         <h2><?php echo $title ?></h2>
         <?php
-        if (have_rows ('contents')): ?>
+        if (have_rows('contents')): ?>
             <div class="contents">
                 <?php
                 $count = 0;
@@ -45,7 +41,7 @@ $total_rows = count(get_sub_field('contents'));
 
             <?php if ($total_rows > $per_page_content): ?>
                 <div class="content-btn">
-                    <button class="get-more-btn bg-orange" data-page="1" data-post-id="<?php echo get_the_ID() ?>"
+                    <button style="display: none;" class="get-more-btn bg-orange" data-page="1" data-post-id="<?php echo get_the_ID() ?>"
                         data-contents-per-page="<?php echo $per_page_content; ?>">
                         <?php echo $btn ?>
                     </button>

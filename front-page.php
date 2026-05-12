@@ -19,9 +19,9 @@
 
                 get_template_part('template-parts/homepage-sections/post-list');
 
-            elseif (get_row_layout() == 'content_list'):
+            // elseif (get_row_layout() == 'content_list'):
 
-                get_template_part('template-parts/homepage-sections/loadmore-content');
+            //     get_template_part('template-parts/homepage-sections/loadmore-content');
 
             elseif (get_row_layout() == 'hero'):
 
@@ -34,22 +34,22 @@
             elseif (get_row_layout() == 'featured_brands'):
 
                 get_template_part('template-parts/homepage-sections/featured-section');
-
-                // elseif (get_row_layout() == 'post_feature'):
-    
-                //     get_template_part('template-parts/homepage-sections/articles-section');
     
             elseif (get_row_layout() == 'benefits_sections'):
 
                 get_template_part('template-parts/homepage-sections/benifits-section');
 
-            elseif (get_row_layout() == 'cta__process'):
+            // elseif (get_row_layout() == 'cta__process'):
 
-                get_template_part('template-parts/homepage-sections/process');
+            //     get_template_part('template-parts/homepage-sections/process');
 
             elseif (get_row_layout() == 'ad_section'):
 
                 get_template_part('template-parts/homepage-sections/ad');
+
+            elseif (get_row_layout() == 'carousel_section'):
+
+                get_template_part('template-parts/homepage-sections/carousel');
 
             elseif (get_row_layout() == 'faq_section'):
 

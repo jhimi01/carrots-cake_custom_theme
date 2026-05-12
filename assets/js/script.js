@@ -38,7 +38,7 @@ jQuery(document).ready(function ($) {
     let currentPage = parseInt(btn.data("page"));
     const maxPages = parseInt(btn.data("max-pages"));
     const postsPerPage = parseInt(btn.data("posts-per-page"));
-    console.log("current page", postsPerPage);
+    // console.log("current page", postsPerPage);
 
     let nextPage = currentPage + 1;
 
@@ -58,19 +58,19 @@ jQuery(document).ready(function ($) {
       },
 
       success: function (response) {
-        if (response.success) {
-          $(".articles").append(response.data.html);
+        if (!response.success) {
+          btn.closest(".load-more-container").hide();
+          return;
+        }
 
-          btn.data("page", nextPage);
+        $(".articles").append(response.data.html);
+        btn.data("page", nextPage);
 
-          console.log('has more', response.data.has_more)
-
-          if (!response.data.has_more) {
-            btn.closest(".load-more-container").hide();
-          } else {
-            btn.text("Load More").prop("disabled", false);
-          }
+        if (response.data.has_more) {
+          console.log("has more", response.data.has_more);
+          btn.text("Load More").prop("disabled", false);
         } else {
+          console.log("btn hidden - no more posts");
           btn.closest(".load-more-container").hide();
         }
       },
@@ -82,7 +82,7 @@ jQuery(document).ready(function ($) {
   });
 });
 
-// filter and sort and search with ajax -----------------
+// filter and sort and search posts with ajax -----------------
 jQuery(document).ready(function ($) {
   function loadPost() {
     const categoryFilter = $("#category-filter").val();
@@ -121,26 +121,27 @@ jQuery(document).ready(function ($) {
   $("#search-articles").on("input", loadPost);
 });
 
-
-
-// load more contetns with ajax
+// load more contetns with ajax ----------------
+let loading = false;
 jQuery(document).ready(function ($) {
-  $(".get-more-btn").click(function () {
-    const contentBtn = $(this);
+  $(window).scroll(function () {
+    // console.log("scroll working");
 
+    if (loading) return;
+
+    const contentBtn = $(".get-more-btn");
     let currentPage = parseInt(contentBtn.data("page"));
     const maxPages = parseInt(contentBtn.data("max-pages"));
-    // const contentsPerPage = parseInt(contentBtn.data("contentsPerPage"));
     const contentsPerPage = parseInt(contentBtn.data("contents-per-page"));
     const postId = parseInt(contentBtn.data("post-id"));
 
-    console.log("contentBtn", postId);
+    // console.log("contentBtn", postId);
 
     let nextPage = currentPage + 1;
 
     if (nextPage > maxPages) return;
 
-    contentBtn.text("Getting...").prop("disabled", true);
+    loading = true;
 
     //sending request to wp backend
     $.ajax({
@@ -155,33 +156,26 @@ jQuery(document).ready(function ($) {
       },
 
       success: function (res) {
+        console.log("res", res);
         if (res.success) {
-          // $(".contents").append(res.data.html);
-          //  $(".contents").append(res.data.html);
           contentBtn
             .closest(".content-lists")
             .find(".contents")
             .append(res.data.html);
-          console.log("this is res", res);
 
           contentBtn.data("page", nextPage);
-
-          if (!res.data.has_more) {
-            contentBtn.hide();
-            console.log("this is res", res);
-          } else {
-            contentBtn.text("Get More Content").prop("disabled", false);
-            console.log("this is res", res);
-          }
         } else {
-          // contentBtn.closest(".get-more-btn").hide();
           contentBtn.text(res.data.message);
-          console.log("this is res", res);
+          // console.log("this is res", res);
         }
       },
 
+      complete: function () {
+        loading = false;
+      },
       error: function (err) {
         console.log("error", err);
+        loading = false;
         contentBtn.text("Error").prop("disabled", false);
       },
     });
