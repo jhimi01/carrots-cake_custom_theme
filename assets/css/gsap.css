@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+
+#gsap-main {
+  /* overflow-x: hidden; */
+}
+section.gsap-container {
+  position: relative;
+  min-height: calc(100vh - 98px); /* adjust to your header */
+  overflow: hidden;
+  padding-top: 20px;
+}
+.gsap-container .content {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gsap-container .content h1 {
+  font-family: "Anton", sans-serif;
+  opacity: 0;
+  font-size: 9rem;
+}
+
+.gsap-container .portfolio-img {
+  position: absolute;
+  bottom: -32rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.portfolio-img img {
+  max-width: 100%;
+  height: auto;
+}
+
+.gsap-container .small-text-msg {
+  position: absolute;
+  left: 25%;
+  top: 26%;
+  width: 250px;
+  height: 250px;
+
+}
+
+.gsap-container .small-text-msg img {
+  width: 100%;
+  height: 100%;
+}
+
+.gsap-container .bye-text-msg {
+    position: absolute;
+    right: 26%;
+    top: 39%;
+    width: 250px;
+    height: 250px;
+    z-index: -4;
+}
+
+.gsap-container .bye-text-msg img {
+  width: 100%;
+  height: 100%;
+}

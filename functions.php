@@ -159,7 +159,7 @@ function carrotscake_css_link_up()
 
 	wp_register_style('google-font', 'https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap', array(), '5.3.0', 'all');
 
-	// wp_enqueue_script('jquery');
+	wp_enqueue_style('ldwp-layout-styles', get_stylesheet_directory_uri() . '/assets/css/gsap.css', array(), filemtime(get_template_directory() . '/assets/css/gsap.css'));
 }
 add_action('wp_enqueue_scripts', 'carrotscake_css_link_up');
 
@@ -191,6 +191,11 @@ function carrotscake_js_link_up()
 	);
 	// gsap cdn
 	wp_enqueue_script('gsap-cdn-js', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA==', array(), null, true);
+	// The core GSAP library
+	wp_enqueue_script('gsap-js', 'https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js', array(), false, true);
+	// ScrollTrigger - with gsap.js passed as a dependency
+	wp_enqueue_script('gsap-st', 'https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js', array('gsap-js'), false, true);
+
 	// gsap scripts
 	wp_enqueue_script('ldwp-gsap-scripts', get_template_directory_uri() . '/assets/js/gsap.js', array(), filemtime(get_template_directory() . '/assets/js/gsap.js'), true);
 }

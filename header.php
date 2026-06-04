@@ -52,7 +52,7 @@
 						</ul>
 					</li>
 					<li><a href="/">About</a></li>
-					<li><a href="/">Contributors</a></li>
+					<li><a href="/gsap">Gsap</a></li>
 					<li><a href="/faq">FAQ</a></li>
 				</ul>
 			</div>
@@ -77,7 +77,7 @@
 								</ul>
 							</li>
 							<li><a href="/">About</a></li>
-							<li><a href="/">Contributors</a></li>
+							<li><a href="/gsap">Gsap</a></li>
 							<li><a href="/faq">FAQ</a></li>
 						</ul>
 					</div>
