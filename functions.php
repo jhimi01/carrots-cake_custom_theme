@@ -173,37 +173,44 @@ function carrotscake_js_link_up()
 		'5.3.0',
 		true
 	);
+	// particle cdn
 	wp_enqueue_script(
-    'particles-library',
-    'https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js',
-    [],
-    null,
-    true
-);
-wp_enqueue_script(
-    'particle-js-init',
-    get_template_directory_uri() . '/assets/js/particle.js',
-    ['particles-library'],
-    '1.0',
-    true
-);
+		'particles-library',
+		'https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js',
+		[],
+		null,
+		true
+	);
+	// particle js
+	wp_enqueue_script(
+		'particle-js-init',
+		get_template_directory_uri() . '/assets/js/particle.js',
+		['particles-library'],
+		'1.0',
+		true
+	);
+	// gsap cdn
+	wp_enqueue_script('gsap-cdn-js', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA==', array(), null, true);
+	// gsap scripts
+	wp_enqueue_script('ldwp-gsap-scripts', get_template_directory_uri() . '/assets/js/gsap.js', array(), filemtime(get_template_directory() . '/assets/js/gsap.js'), true);
 }
 add_action('wp_enqueue_scripts', 'carrotscake_js_link_up');
 
 
 // carousel linkup -------------
-function carrotscake_carousel_js_css_link(){
+function carrotscake_carousel_js_css_link()
+{
 
-// swiper css
-wp_enqueue_style( 'swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css', [], '12.0.0' );
+	// swiper css
+	wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css', [], '12.0.0');
 
-// swiper js
-wp_enqueue_script( 'swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js', [], '12.0.0', true );
+	// swiper js
+	wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js', [], '12.0.0', true);
 
-// custom slider js
-wp_enqueue_script( 'custom-slider', get_template_directory_uri() . '/assets/js/slider.js', ['swiper-js'], '1.0', true );
+	// custom slider js
+	wp_enqueue_script('custom-slider', get_template_directory_uri() . '/assets/js/slider.js', ['swiper-js'], '1.0', true);
 }
-add_action( 'wp_enqueue_scripts', 'carrotscake_carousel_js_css_link' );
+add_action('wp_enqueue_scripts', 'carrotscake_carousel_js_css_link');
 
 
 
@@ -286,7 +293,8 @@ function load_more_posts_handler()
 		'html' => $html,
 		'has_more' => $has_more
 	]);
-};
+}
+;
 
 
 // get more contents with ajax -------------
@@ -354,7 +362,8 @@ function get_more_contents_handler()
 		'html' => $html,
 		'has_more' => $has_more,
 	]);
-};
+}
+;
 
 
 // Localize script to pass AJAX URL and nonce (JS bridge for connecting php -> js)
