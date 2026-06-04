@@ -5,13 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
     spaceBetween: 0,
     centeredSlides: true,
     loop: true,
-    // coverflowEffect: {
-    //   rotate: 0,
-    //   stretch: 0,
-    //   depth: 100,
-    //   modifier: 4,
-    //   slideShadows: true,
-    // },
     breakpoints: {
       640: {
         slidesPerView: 1,

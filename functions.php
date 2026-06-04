@@ -173,6 +173,20 @@ function carrotscake_js_link_up()
 		'5.3.0',
 		true
 	);
+	wp_enqueue_script(
+    'particles-library',
+    'https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js',
+    [],
+    null,
+    true
+);
+wp_enqueue_script(
+    'particle-js-init',
+    get_template_directory_uri() . '/assets/js/particle.js',
+    ['particles-library'],
+    '1.0',
+    true
+);
 }
 add_action('wp_enqueue_scripts', 'carrotscake_js_link_up');
 
