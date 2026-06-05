@@ -7,8 +7,9 @@ section.gsap-container {
   position: relative;
   min-height: calc(100vh - 98px); /* adjust to your header */
   overflow: hidden;
-  margin: 50px 0;
+  /* margin: 50px 0; */
   padding-top: 0;
+
 }
 .gsap-container .content {
   height: 100%;
@@ -23,7 +24,7 @@ section.gsap-container {
 
 .gsap-container .portfolio-img {
   position: absolute;
-  bottom: 40px;
+  bottom: 35px;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -85,7 +86,7 @@ section.gsap-container {
 }
 
 .gsap-container .overlay {
-  position: fixed;
+  position: absolute;
   inset: 0;
   background: #000;
   opacity: 0;
