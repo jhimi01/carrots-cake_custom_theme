@@ -14,7 +14,10 @@
         <div class="bye-text-msg">
              <img src="<?php echo get_template_directory_uri();  ?>/assets/images/be.png" alt="message">
         </div>
-        <div class="gradient-cericle"></div>
+        <!-- <div class="gradient-cericle"></div> -->
+        <div class="overlay">
+            <h2>zz...</h2>
+        </div>
     </section>
 </main>
 

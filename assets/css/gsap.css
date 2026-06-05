@@ -7,7 +7,8 @@ section.gsap-container {
   position: relative;
   min-height: calc(100vh - 98px); /* adjust to your header */
   overflow: hidden;
-  padding-top: 20px;
+  margin: 50px 0;
+  padding-top: 0;
 }
 .gsap-container .content {
   height: 100%;
@@ -17,13 +18,12 @@ section.gsap-container {
 }
 .gsap-container .content h1 {
   font-family: "Anton", sans-serif;
-  opacity: 0;
   font-size: 9rem;
 }
 
 .gsap-container .portfolio-img {
   position: absolute;
-  bottom: -32rem;
+  bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -38,7 +38,6 @@ section.gsap-container {
   top: 26%;
   width: 250px;
   height: 250px;
-
 }
 
 .gsap-container .small-text-msg img {
@@ -47,15 +46,56 @@ section.gsap-container {
 }
 
 .gsap-container .bye-text-msg {
-    position: absolute;
-    right: 26%;
-    top: 39%;
-    width: 250px;
-    height: 250px;
-    z-index: -4;
+  position: absolute;
+  right: 26%;
+  top: 39%;
+  width: 250px;
+  height: 250px;
+  z-index: -4;
 }
 
 .gsap-container .bye-text-msg img {
   width: 100%;
   height: 100%;
+}
+
+/* .gradient-cericle{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #000000, rgba(255, 255, 255, 0.3));
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+} */
+.gradient-cericle {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background: radial-gradient(circle, #000 0%, #000 60%, transparent 100%);
+  opacity: 0;
+  z-index: 999;
+  pointer-events: none;
+}
+
+.gsap-container .overlay {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  opacity: 0;
+  z-index: 998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gsap-container .overlay h2 {
+  color: rgb(38, 31, 237);
+  font-family: cursive;
+  /* transform: rotate(331deg); */
 }
