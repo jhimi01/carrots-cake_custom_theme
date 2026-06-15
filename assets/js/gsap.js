@@ -11,6 +11,7 @@ tl.from(".gsap-container h1", {
       duration: 1,
       y: 540,
       ease: "elastic.out(1,0.8)",
+      display: "none" 
     },
     "+=1.5",
   )
@@ -70,6 +71,7 @@ tl.from(".gsap-container h1", {
     y: 540,
     duration: 1,
     ease: "power2.inOut",
+    display: "none",
   })
   .to(".gsap-container h1", {
     opacity: 0,
@@ -84,20 +86,17 @@ tl.from(".gsap-container h1", {
     },
     "<",
   )
-  .to(
-    ".overlay",
-    {
-      opacity: 1,
-      duration: 1,
-    },
-  )
+  .to(".overlay", {
+    opacity: 1,
+    duration: 1,
+  })
   .to(
     ".overlay h2",
     {
       scale: 1,
       yoyo: true,
       repeat: -1,
-      opacity: 0.3
+      opacity: 0.3,
     },
     "<",
-  )
+  );

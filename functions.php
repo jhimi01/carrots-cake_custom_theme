@@ -190,14 +190,35 @@ function carrotscake_js_link_up()
 		true
 	);
 	// gsap cdn
-	wp_enqueue_script('gsap-cdn-js', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA==', array(), null, true);
+	// wp_enqueue_script('gsap-cdn-js', 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA==', array(), null, true);
 	// The core GSAP library
-	wp_enqueue_script('gsap-js', 'https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js', array(), false, true);
-	// ScrollTrigger - with gsap.js passed as a dependency
-	wp_enqueue_script('gsap-st', 'https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js', array('gsap-js'), false, true);
+	wp_enqueue_script(
+		'gsap-js',
+		'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js',
+		[],
+		null,
+		true
+	);
+
+	wp_enqueue_script(
+		'gsap-scrolltrigger',
+		'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js',
+		['gsap-js'],
+		null,
+		true
+	);
 
 	// gsap scripts
 	wp_enqueue_script('ldwp-gsap-scripts', get_template_directory_uri() . '/assets/js/gsap.js', array(), filemtime(get_template_directory() . '/assets/js/gsap.js'), true);
+
+	// gsap scrolltriger scripts
+	wp_enqueue_script(
+		'ldwp-scrolltriger-scripts',
+		get_template_directory_uri() . '/assets/js/scrollTriger.js',
+		array('gsap-js', 'gsap-scrolltrigger'),
+		filemtime(get_template_directory() . '/assets/js/scrollTriger.js'),
+		true
+	);
 }
 add_action('wp_enqueue_scripts', 'carrotscake_js_link_up');
 
